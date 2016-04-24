@@ -1,6 +1,5 @@
 ---
 layout: post
-comments: true
 title: Thought Patterns&#58; Marginal
 ---
 
