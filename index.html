@@ -3,31 +3,53 @@ layout: default
 title: Home
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <article class="post">
-    <h1 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
+<div class="container content">
+    <p>Hi! I'm Alex.</p>
+    <p>
+        I'm a Sophomore at <a target="_blank" href="http://hse.ru/en">Higher School of Economics</a> in Moscow, where I major in Economics, minor in Math, and work as a Research Assistant in the Laboratory for Experimental and Behavioural Economics.
+    </p>
+    <p>
+        Some things I like:
+    </p>
+    <ul>
+        <li>-- abstract art</li>
+        <li>-- math</li>
+        <li>-- roko's basilisk</li>
+        <li>-- economics</li>
+        <li>-- dostoyevsky</li>
+        <li>-- running</li>
+    </ul>
+    <p>
+        I love meeting new people! If you wanna grab a tea with me (at least one person already used this opportunity :p), drop me a line at <a target="_blank" href="mailto:alex@guzey.com">alex@guzey.com</a> or contact me on social media.
+    </p>
 
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
-
-    {{ post.content }}
-  </article>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
+    <ul class="social-links">
+        <li>
+            <a class="social-icon" target="_blank" href="https://facebook.com/rationalnoodles">
+                <div data-icon="ei-sc-facebook"></div>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon" target="_blank" href="https://twitter.com/alex_guzey">
+                <div data-icon="ei-sc-twitter"></div>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon" target="_blank" href="https:/vk.com/alexeyguzey">
+                <div data-icon="ei-sc-vk"></div>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon" target="_blank" href="https://linkedin.com/in/alexeyguzey">
+                <div data-icon="ei-sc-linkedin"></div>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon" target="_blank" href="https://github.com/guzey">
+                <div data-icon="ei-sc-github"></div>
+            </a>
+        </li>
+    </ul>
+    <br>
+    <p style="text-align: center; font-size: 16px">Вы могли искать <a href="http://guzei.com">Guzei.com</a></p>
 </div>

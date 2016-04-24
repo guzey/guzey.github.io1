@@ -1,32 +1,36 @@
 # Permalinks
-permalink:           pretty
+permalink:           /blog/:title
 
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               Alex Guzey
+url:                 http://guzey.com
 paginate:            1
-baseurl:             ""
+paginate_path: 	     "blog/page:num"
 
-# Assets
-#
-# We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:          _sass
-  style:            :compressed
-
-# About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Alex Guzey
+  url:               https://twitter.com/alex_guzey
+  email:             alex@guzey.com
 
-# Custom vars
-version:             2.0.0
-github:
-  repo:              https://github.com/poole/poole
+# Menu
+pages_list:
+  Insight Porn: '/insight'
+  Blog: '/blog'
+  Archive: '/blog/archive'
+  Feed: '/atom.xml'
 
 # Gems
 gems:
   - jekyll-paginate
   - jekyll-gist
+
+highlighter: pygments
+markdown: kramdown
+
+# Custom vars
+version:             2.0.0
+github:
+  repo:              https://github.com/poole/poole
+  
+# only shows posts' excepts in /blog/
+excerpt_separator: "<!--excerpt-->"

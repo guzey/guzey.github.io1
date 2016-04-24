@@ -1,0 +1,337 @@
+/*! A crazy mix of HTML5 Boilerplate v5.2.0 and poole css with own additions | MIT License | https://html5boilerplate.com/ https://github.com/poole/poole */
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: #222;
+    background-color: #fcfcfc;
+}
+
+body {
+    position: relative;
+    margin: 0px auto; 
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+a,
+a:visited {
+    color: #2b8ccc;
+    font-weight: normal;
+    text-decoration: none;
+}
+/* `:focus` is linked to `:hover` for basic accessibility */
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+blockquote {
+    font-weight: 500;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
+}
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 8px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #313131;
+  text-rendering: optimizeLegibility;
+}
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 36px;
+    margin-bottom: .5;
+    
+    line-height: 52px
+}
+h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+h3 {
+  margin-top: 24px;
+  font-size: 24px;
+}
+h4, h5, h6 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.social-links {
+    padding: 0;
+    text-align: center;
+}
+.social-links li {
+    display: inline-block;
+}
+.social-links li .icon {
+    width: 50px;
+    height: 50px;
+    fill: #4C4C4C;
+}
+ul {
+    list-style-type: none;
+}
+.moar {
+    background-color: #e8e8e8;    
+    color: #559;
+    -moz-box-shadow: 3px 4px 0px 0px #899599;
+    -webkit-box-shadow: 3px 4px 0px 0px #899599;
+    box-shadow: 3px 4px 0px 0px #899599;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 1px solid #d7d7d7;
+    cursor: pointer;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+.moar:hover {
+    background-color: #ededed;
+}
+.quote {
+    background-color: #fff;
+    margin-top: 30px;
+    -moz-box-shadow: 0px 5px 10px 3px #899599;
+    -webkit-box-shadow: 0px 5px 10px 3px #899599;
+    box-shadow: 0px 5px 10px 3px #848484;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid #d7d7d7;
+    text-shadow: 0px 0px 0px #2f6627;
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+    
+
+/*
+ * Masthead
+ *
+ * Super small header above the content for site name and short description.
+ */
+
+.masthead {
+    padding-top:    1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+.masthead-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #505050;
+}
+.masthead-title a {
+    color: #505050;
+}
+.masthead-title small {
+    font-size: 85%;
+    font-weight: 400;
+    color: #c0c0c0;
+    letter-spacing: 0;
+}
+
+
+/*
+ * Posts and pages
+ *
+ * Each post is wrapped in `.post` and is used on default and post layouts. Each
+ * page is wrapped in `.page` and is only used on the page layout.
+ */
+
+.page,
+.post {
+  margin-bottom: 4em;
+}
+
+/* Blog post or page title */
+.page-title,
+.post-title,
+.post-title a {
+  color: #505050;
+}
+.page-title,
+.post-title {
+  margin-top: 0;
+}
+/* Meta data line below post title */
+.post-date {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+}
+
+/* Related posts */
+.related {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #eee;
+}
+.related-posts {
+  padding-left: 0;
+  list-style: none;
+}
+.related-posts h3 {
+  margin-top: 0;
+}
+.related-posts li small {
+  font-size: 75%;
+  color: #999;
+}
+.related-posts li a:hover {
+  color: #268bd2;
+  text-decoration: none;
+}
+.related-posts li a:hover small {
+  color: inherit;
+}
+
+
+/*
+ * Pagination
+ *
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+ * there are no more previous or next posts to show.
+ */
+
+/*
+ * Pagination
+ *
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+ * there are no more previous or next posts to show.
+ */
+
+.pagination {
+  overflow: hidden; /* clearfix */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Pagination items can be `span`s or `a`s */
+.pagination-item {
+  display: block;
+  padding: 1rem;
+  border: 1px solid #eee;
+}
+.pagination-item:first-child {
+  margin-bottom: -1px;
+}
+
+/* Only provide a hover state for linked pagination items */
+a.pagination-item:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 30em) {
+  .pagination {
+    margin: 3rem 0;
+  }
+  .pagination-item {
+    float: left;
+    width: 33%;
+  }
+  .pagination-item:first-child {
+    margin-bottom: 0;
+    border-top-left-radius:    4px;
+    border-bottom-left-radius: 4px;
+  }
+  .pagination-item:last-child {
+    margin-left: -1px;
+    border-top-right-radius:    4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+/* For footer to be below all other objects. */
+.clear {
+ clear: both;
+}
+
+footer {
+    text-align: center;
+}
+
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 16px 0px;
+    padding: 0;
+}
+    
+    /*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Container
+ *
+ * Center the page content.
+ */
+
+.container {
+  max-width: 600px;
+  padding-left:  18px;
+  padding-right: 18px;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
