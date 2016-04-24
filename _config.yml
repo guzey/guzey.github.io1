@@ -24,7 +24,7 @@ gems:
   - jekyll-paginate
   - jekyll-gist
 
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 
 # Custom vars
