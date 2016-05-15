@@ -11,6 +11,8 @@ title: Thought Patterns&#58; Marginal
 
 **Solution:** Anki deck with the maximum card interval of 1 day and long initial learning curve.
 
+(Assumption I have to make here is that you use anki at least daily)
+
 <!--excerpt-->
 
 Why is this post called "marginal" and why should this work at all? Because the problem with the type of actions I described here is not that they're intrinsically hard, but the inertia. Frequent reminders of them by Anki should make it go away and substitute the old thought pattern with the new one without significant exertion of will.
