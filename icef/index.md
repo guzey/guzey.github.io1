@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: ICEF exams repository
 ---
 
 ## ICEF exams repository
