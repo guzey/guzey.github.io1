@@ -54,7 +54,8 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/admittedlyhuman/status/695050010791124992",
           "https://twitter.com/robinhanson/status/709883858355884034",
           "https://twitter.com/literalbanana/status/712913395645685760",
-          "https://twitter.com/literalbanana/status/720188569675956224"
+          "https://twitter.com/literalbanana/status/720188569675956224",
+          "https://twitter.com/Magic_of_expect/status/734970032283783169"
          ];
 
 // 
