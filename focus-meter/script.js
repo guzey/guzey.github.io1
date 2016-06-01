@@ -25,7 +25,7 @@ function timer() {
 function stopwatch() {
     var time = document.getElementById('stopwatch').value;
     var points = parseInt(document.getElementById('points').value, 10);
-    var new_time = (parseFloat(time, 10) - .1).toFixed(1);
+    var new_time = parseFloat(time, 10) - 1;
 
     if (new_time < 0) {
         new_time = 600;
