@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Playing With Identity or Solution to Productivity
+title: Playing With Identity
 ---
 
 **Abstract**: trope "[I'll move to a new city -- become a new person](http://garybasin.com/2015/12/28/routine-power-and-peril/)" is familiar; the fact that you can use it consistently, easily, and don't need to move cities is not. By using this insight you can gain a lot of agency.
