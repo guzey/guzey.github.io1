@@ -34,6 +34,10 @@ Obfuscating hierarchies should probably help. In fact, this is what norms agains
 <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Magick requires you to actually believe it, not act as if you believe it. Need advanced epistemology to use without sacrificing sanity.</p>&mdash; ({Fate [of) Twist}] (@Magic_of_expect) <a href="https://twitter.com/Magic_of_expect/status/662768981934129153">November 6, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+## Thanks
+
+Thanks to [Daniel Klein](https://twitter.com/othercriteria) for the fruitful discussion that lead me to write this post.
+
 ## References
 
 Brown, G. D. A., Gardner, J., Oswald, A. J., & Qian, J. (2008). [Does Wage Rank Affect Employees’ Well‐being?](http://ftp.iza.org/dp1505.pdf) *Industrial Relations: A Journal of Economy and Society*, 47(3), 355–389. http://doi.org/10.1111/J.1468-232X.2008.00525.X
