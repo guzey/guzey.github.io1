@@ -9,6 +9,7 @@ title: Site Contents
     - [Tweet-Sized Insight Porn](../insight)
     - [Focus-Meter](../focus-meter)
     - [ICEF materials](../icef)
+    - [tweet=joke](../joke)
 
 - ## Blog Archive
 {% for post in site.posts %}
