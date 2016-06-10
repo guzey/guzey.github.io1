@@ -29,14 +29,16 @@ In fact, in the present model, if hierarchies are transprent, there's very likel
 
 ## Conclusion
 
-Obfuscating hierarchies should probably help. In fact, this is what norms against wage disclosure are probably [about](https://www.youtube.com/watch?v=1bO8zEaSuWg) (Perez-truglia, 2016), (Card, Mas, Moretti, & Saez, 2010), (Brown, Gardner, Oswald, & Qian, 2008). But universality of this strategy is questionable. Still, I really like this model as a basis for thinking about the world, as, personally, I can employ advanced cognitive tools to extend the dimensions to infinity, assign all axes equal values, pretend hierarchies to be completely obfuscated, etc. and live in complete peace with myself and others.
+Obfuscating hierarchies should probably help. In fact, this is what norms against wage disclosure are probably [about](https://www.youtube.com/watch?v=1bO8zEaSuWg) (Perez-truglia, 2016), (Card, Mas, Moretti, & Saez, 2010), (Brown, Gardner, Oswald, & Qian, 2008). But universality of this strategy is questionable.
+
+Still, I really like this model as a basis for thinking about the world, as, personally, I can employ advanced epistemology to extend the dimensions to infinity, believe weightings to impossible, pretend hierarchies to be completely obfuscated, etc. and live in complete peace with myself and others.
 
 <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Magick requires you to actually believe it, not act as if you believe it. Need advanced epistemology to use without sacrificing sanity.</p>&mdash; ({Fate [of) Twist}] (@Magic_of_expect) <a href="https://twitter.com/Magic_of_expect/status/662768981934129153">November 6, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Thanks
 
-Thanks to [Daniel Klein](https://twitter.com/othercriteria) for the fruitful discussion that lead me to write this post.
+Thanks to [Daniel Klein](https://twitter.com/othercriteria) for letting me bounce my ideas off him.
 
 ## References
 
