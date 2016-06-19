@@ -40,3 +40,6 @@ validation-report.json
 
 # Folders to ignore
 node_modules
+left-out
+icef/3
+icef/4
