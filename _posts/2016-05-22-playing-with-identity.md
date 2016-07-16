@@ -16,11 +16,11 @@ Before reading any further, you can test whether whatever I want to say in this 
 3. Go to that place strongly commiting to only doing the particular thing you decided to do there and not get distracted either physically or mentally on other things. This means as little chatting with people as possible; no checking email (unless it's absolutely needed); no checking social media; not doing anything at all that is not directly related to the task at hand.
 4. Notice how easy or difficult the task was to work on and how easy or difficult it was to not let yourself be distracted, compared to your usual environment.
 
-**My prediction**: however off-putting and ughy the task is, there's gonna be close to none difficulty in concentrating on it or any other issue that usually prevents you from accomplishing it.
+**My prediction**: however off-putting and ughy the task is, there's going to be close to none difficulty in concentrating on it and there will be no other issues that usually prevent you from accomplishing it.
 
 ## Why this works?
 
-Identity is what causes us to behave consistently accross space and time. While it's seemingly difficult to change arbitrarily, new locations, new situations, etc. are by definition things where no strong identity exists. Yet, most of the time, when we encounter unfamiliar contexts, we unthinkingly assume the default identity. This needs not be the case. New contexts present us with environments where the identity is higly malleable and with relatively little excertion of will you can conjure identites at will.
+Identity is what causes us to behave consistently accross space and time. While it's seemingly difficult to change arbitrarily, new locations, new situations, etc. are by definition things where no strong identity exists. Yet, most of the time, when we encounter unfamiliar contexts, we unthinkingly assume the default identity. This needs not be the case. New contexts present us with environments where the identity is highly malleable and with relatively little exertion of will you can conjure identites at will.
 
 <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">When trying new activities, imagine growing a new self-pattern for that activity rather than testing if your primary self likes it</p>&mdash; The Lagrangian (@The_Lagrangian) <a href="https://twitter.com/The_Lagrangian/status/670332250089762816">November 27, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
