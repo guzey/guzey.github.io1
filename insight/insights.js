@@ -60,7 +60,15 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/vgr/status/738544615393918976",
           "https://twitter.com/semiotechnic/status/739058402895220736",
           "https://twitter.com/Grognor/status/739620986388160516",
-          "https://twitter.com/simplic10/status/740553360651096065"
+          "https://twitter.com/simplic10/status/740553360651096065",
+          "https://twitter.com/fortelabs/status/744004801894092801",
+          "https://twitter.com/Grognor/status/746621451755786240",
+          "https://twitter.com/Grognor/status/747180673828478976",
+          "https://twitter.com/Grognor/status/751301961157226496",
+          "https://twitter.com/ArgumentOfFun/status/751607655085506560",
+          "https://twitter.com/ahaspel/status/752905626557243392",
+          "https://twitter.com/vgr/status/754711742257606656",
+          "https://twitter.com/drethelin/status/754757235482333184"
          ];
 
 // 
