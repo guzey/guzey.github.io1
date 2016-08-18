@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 300 150" style="enable-background:new 0 0 300 150;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st1{font-family:'SourceSansPro-Regular';}
+	.st2{font-size:18.0028px;}
+	.st3{fill:none;stroke:#000000;stroke-width:0.75;stroke-miterlimit:10;}
+	.st4{font-size:15.0024px;}
+</style>
+<g>
+	<g>
+		<line class="st0" x1="92.3" y1="19.6" x2="92.3" y2="127.6"/>
+		<g>
+			<polygon points="92.3,12.5 88.3,22.5 92.3,20.1 96.4,22.5 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st0" x1="204.2" y1="127.6" x2="92.3" y2="127.6"/>
+		<g>
+			<polygon points="211.3,127.6 201.3,123.5 203.7,127.6 201.3,131.7 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 79.7134 14.9429)" class="st1 st2">r</text>
+<text transform="matrix(1 0 0 1 208.3311 144.7432)" class="st1 st2">Q</text>
+<line class="st3" x1="105" y1="111.9" x2="195" y2="53.7"/>
+<line class="st3" x1="105" y1="56.7" x2="197" y2="106.1"/>
+<text transform="matrix(1 0 0 1 194.5244 49.2065)" class="st1 st4">Q</text>
+<text transform="matrix(0.583 0 0 0.583 204.4854 54.2021)" class="st1 st4">s</text>
+<text transform="matrix(1 0 0 1 196.1289 101.1133)" class="st1 st4">Q</text>
+<text transform="matrix(0.583 0 0 0.583 206.0898 106.1094)" class="st1 st4">d</text>
+</svg>
