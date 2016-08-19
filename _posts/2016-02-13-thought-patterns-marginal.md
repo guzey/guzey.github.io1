@@ -17,6 +17,14 @@ title: Thought Patterns&#58; Marginal
 
 Why is this post called "marginal" and why should this work at all? Because the problem with the type of actions I described here is not that they're intrinsically hard, but the inertia. Frequent reminders of them by Anki should make it go away and substitute the old thought pattern with the new one without significant exertion of will.
 
-Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it", which lasts much longer.
+Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it", which lasts much longer and, hopefully, causes some cognitive dissonance.
 
-You can try this strategy out by [downloading my deck](../files/max_1_day.apkg) and adjusting it to your needs.
+To try this strategy, you need to create a new deck in Anki, and create a note, which has e.g. "less than 3 minutes" on Front card and "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it" on Back card. I have a "mental_pattern" tag associated with these notes.
+
+Then go to deck options and create a new Options group. Key setting here are:
+
+1. Steps (in minutes) -- I set to 1 5 10 40 120 360 1440, but this may vary
+2. Graduating interval -- 1 day
+3. Easy interval -- 1 day
+4. Interval modifier -- anything less than 100%
+5. Maximum interval -- 1 day
