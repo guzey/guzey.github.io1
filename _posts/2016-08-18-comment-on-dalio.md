@@ -3,9 +3,11 @@ layout: post
 title: Comment on Dalio
 ---
 
-This is an explanation of faulty reasoning in Dalio's "[How The Economic Machine Works by Ray Dalio](https://www.youtube.com/watch?v=PHe0bXAIuk0)" video, attempted to be clear for noneconomists.
+This is an explanation of faulty reasoning in Dalio's "[How The Economic Machine Works by Ray Dalio](https://www.youtube.com/watch?v=PHe0bXAIuk0)" video, attempted to be clear for people with no ready economic intuition.
 
-The first specific claim I have a problem with is "When interest rates are high, there's less borrowing because it's expensive" (time: 4:15)
+The specific claim I have a problem with is "When interest rates are high, there's less borrowing because it's expensive" (time: 4:15).
+
+This statement is important not mainly because it's wrong, but because it's a perfect example of something that sounds entirely uncontroversial, common-sense, and does not raise any red flags, unless you're delibirately looking for them. 
 
 <!--excerpt-->
 
