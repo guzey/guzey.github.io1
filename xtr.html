@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("div").click(function(){
+        $(".0_box").animate({
+            opacity: 1
+        }, {duration: 1500});
+        $(".1_box").animate({
+            opacity: 0
+        }, {duration: 1500});
+        $(".2_box").animate({
+            opacity: 0
+        }, {duration: 1000});
+        $(".3_box").animate({
+            opacity: 0
+        }, {duration: 500} );
+        $(".0_box").animate({
+            left: '200px',
+            top: '200px',
+        }, {duration: 500});
+        $(".1_box").animate({
+            left: '400px',
+            top: '-325px',
+        }, {duration: 500});
+        $(".2_box").animate({
+            left: '500px',
+            top: '-550px',
+        }, {duration: 500});
+        $(".3_box").animate({
+            left: '550px',
+            top: '-625px',
+        }, {duration: 500});
+        });
+});
+</script>
+</head>
+<body>
+
+<p>Click the box!</p>
+    
+    <div class="0_box" style="position: relative; top: 0px; left: 0px; width: 725px; height: 725px;
+     background-color: #ddd; border-radius: 6px; cursor: pointer;"
+         onclick="guessCheck(event)"></div>
+    <div class="1_box" style="position: relative; top: -525px; left: 200px; width: 325px; height: 325px;
+     background-color: #bbb; border-radius: 6px; cursor: pointer;"
+         onclick="guessCheck(event)"></div>
+    <div class="2_box" style="position: relative; top: -750px; left: 300px; width: 125px; height: 125px;
+     background-color: #888; border-radius: 6px; cursor: pointer;"
+         onclick="guessCheck(event)"></div>
+    <div class="3_box" style="position: relative; top: -825px; left: 350px; width: 25px; height: 25px;
+     background-color: #555; border-radius: 6px; cursor: pointer;"
+         onclick="guessCheck(event)"></div>>
+    
+</body>
+</html>
