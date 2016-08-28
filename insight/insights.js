@@ -68,7 +68,8 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/ArgumentOfFun/status/751607655085506560",
           "https://twitter.com/ahaspel/status/752905626557243392",
           "https://twitter.com/vgr/status/754711742257606656",
-          "https://twitter.com/drethelin/status/754757235482333184"
+          "https://twitter.com/drethelin/status/754757235482333184",
+          "https://twitter.com/CurlOfGradient/status/763055323393495040"
          ];
 
 // 
