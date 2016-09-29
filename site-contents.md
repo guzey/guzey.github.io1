@@ -8,7 +8,6 @@ title: Site Contents
 - ## Miscellanea
     - [Tweet-Sized Insight Porn](../insight)
     - [Focus-Meter](../focus-meter)
-    - [ICEF materials](../icef)
 
 - ## Blog Archive
 {% for post in site.posts %}
