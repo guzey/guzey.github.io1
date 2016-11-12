@@ -49,6 +49,7 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/The_Lagrangian/status/684431752941715456",
           "https://twitter.com/Grognor/status/685045227933966336",
           "https://twitter.com/admittedlyhuman/status/695050010791124992",
+          "https://twitter.com/othercriteria/status/696717930130759681",
           "https://twitter.com/vgr/status/706309613264580609",
           "https://twitter.com/robinhanson/status/709883858355884034",
           "https://twitter.com/literalbanana/status/712913395645685760",
@@ -69,7 +70,13 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/ahaspel/status/752905626557243392",
           "https://twitter.com/vgr/status/754711742257606656",
           "https://twitter.com/drethelin/status/754757235482333184",
-          "https://twitter.com/CurlOfGradient/status/763055323393495040"
+          "https://twitter.com/CurlOfGradient/status/763055323393495040",
+          "https://twitter.com/tntuva/status/776156116053069824",
+          "https://twitter.com/MoralOfStory/status/777969199075340288",
+          "https://twitter.com/mr_scientism/status/786363788924588032",
+          "https://twitter.com/naval/status/788551010390118400",
+          "https://twitter.com/Grognor/status/788792261681131520",
+          "https://twitter.com/tntuva/status/789660268322131970"
          ];
 
 // 
