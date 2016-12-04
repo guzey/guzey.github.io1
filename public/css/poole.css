@@ -84,9 +84,11 @@ h4, h5, h6 {
     height: 50px;
     fill: #4C4C4C;
 }
+/*
 ul {
     list-style-type: none;
 }
+*/
 .moar {
     background-color: #e8e8e8;    
     color: #559;

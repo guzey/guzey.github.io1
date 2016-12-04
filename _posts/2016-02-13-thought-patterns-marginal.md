@@ -11,7 +11,7 @@ title: Thought Patterns&#58; Marginal
 
 **Solution:** Anki deck with the maximum card interval of 1 day and long initial learning curve.
 
-(Assumption I have to make here is that you use Anki daily (I do it while commuting))
+(Assumption I have to make here is that you use Anki at least somewhat daily (I do it while commuting))
 
 <!--excerpt-->
 
@@ -20,6 +20,14 @@ title: Thought Patterns&#58; Marginal
 Why is this post called "marginal" and why should this work at all? Because the problem with the type of actions I described here is not that they're intrinsically hard, but the inertia. Frequent reminders of them by Anki should make it go away and substitute the old thought pattern with the new one without significant exertion of will.
 
 Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it", which lasts much longer and, hopefully, causes some cognitive dissonance.
+
+## Dec 2016 update: Wait, but does it *actually* work?
+
+It totally does:
+
+* Every time I see a full trash can, a thought "I'm not postponing stuff like this" almost compulsively pops up in my mind and I obediently take out the trash.
+* Just now I needed to send an ughy email and instead of thinking "uh, will write it later", the thought process was, "ok, but is my mental state gonna be any different in the future? No. Then don't postpone it." And I sat down and sent it immediately.
+* When I get a compulsion to check social media "for the last time" the following thought appears "no, the last time was the last time. Otherwise the commitment is not credible." This works like 70% of time.
 
 ## Implementation
 
