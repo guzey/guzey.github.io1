@@ -41,7 +41,7 @@ Still, I really like this model as a basis for thinking about the world, as, per
 Thanks to [Daniel Klein](https://twitter.com/othercriteria) for letting me bounce my ideas off him.
 
 
-My thinking on the topic is heavily influenced by Slate Star Codex's Scott Alexander, spicifically:
+My thinking on the topic is heavily influenced by Slate Star Codex's Scott Alexander, specifically:
 
 [Burdens](http://slatestarcodex.com/2014/08/16/burdens/) and [The Parable of the Talents](http://slatestarcodex.com/2015/01/31/the-parable-of-the-talents/)
 
