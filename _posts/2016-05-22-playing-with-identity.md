@@ -5,6 +5,8 @@ title: Playing With Identity
 
 **Abstract**: trope "[I'll move to a new city -- become a new person](http://garybasin.com/2015/12/28/routine-power-and-peril/)" is familiar; the fact that you can use it consistently, easily, and don't need to move cities is not. By using this insight you can gain a lot of agency.
 
+Alternatively, in this post I generalize the "go work at Starbucks because can't concentrate at home" thing.
+
 ## Bullshit test
 
 Before reading any further, you can test whether whatever I want to say in this post is total bullshit or not by doing this:
