@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Comment on Dalio
+title: A Comment on Dalio
 ---
 
 This is an explanation of faulty reasoning in "[How The Economic Machine Works by Ray Dalio](https://www.youtube.com/watch?v=PHe0bXAIuk0)" video, attempted to be clear for people with no ready economic intuition.
