@@ -40,3 +40,9 @@ Then go to deck options and create a new Options group. Key settings are:
 3. Easy interval -- 1 day
 4. Interval modifier -- anything less than 100% (otherwise 1 day limit would be ignored)
 5. Maximum interval -- 1 day
+
+## Further Reading
+
+[Trigger Action Planning](http://lesswrong.com/r/discussion/lw/o7c/making_intentions_concrete_triggeraction_planning/).
+
+A similar idea was proposed on LessWrong back in [2011](http://lesswrong.com/lw/5v1/selfprogramming_through_spaced_repetition/).
