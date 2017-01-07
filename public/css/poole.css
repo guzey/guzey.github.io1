@@ -337,3 +337,10 @@ fieldset {
 textarea {
     resize: vertical;
 }
+
+/* mailchimp */
+#mc_embed_signup {
+    background: #fcfcfc;
+    clear: left;
+    font: 14px Helvetica,Arial,sans-serif;
+}
