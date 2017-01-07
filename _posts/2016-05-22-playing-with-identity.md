@@ -3,7 +3,7 @@ layout: post
 title: Playing With Identity
 ---
 
-**Abstract**: trope "[I'll move to a new city -- become a new person](http://garybasin.com/2015/12/28/routine-power-and-peril/)" is familiar; the fact that you can use it consistently, easily, and don't need to move cities is not. By using this insight you can gain a lot of agency.
+**Abstract**: trope "[I'll move to a new city -- become a new person](http://garybasin.com/routine-power-and-peril/)" is familiar; the fact that you can use it consistently, easily, and don't need to move cities is not. By using this insight you can gain a lot of agency.
 
 Alternatively, in this post I generalize the "go work to Starbucks because can't concentrate at home" thing.
 
@@ -38,3 +38,9 @@ Buy a new computer. Don't do things mentioned above while using it. That's it. I
 ## But won't you fall back to your original patterns eventually?
 
 Yes, you totally might. Maybe the new identity will prove to be an equilibrium -- maybe not. This is indeed a problem for which the solution is not clear to me, other than practicing, and noticing how you fail. There's nothing to prevent you from becoming less vigilant and eventually returning to old ways completely, the only solution to which would be to discover a new context again, and try better next time.
+
+## References / Further Reading
+
+Malcolm Ocean's [A ritual to upgrade my Face](http://malcolmocean.com/2016/03/face-personality-upgrade-ritual/) is an exploration of the same theme by invoking *rituals* to change the identity in a stable way.
+
+In [The Holy Grail of Self-Improvement](http://www.ribbonfarm.com/2016/03/24/the-holy-grail-of-self-improvement/) Tiago Forte looks at how small changes in behavior can propagate into something more radical and how our "Neo-Pavlonian" approach to behavior change (to which I apparently subscribe) can fail us.
