@@ -5,13 +5,13 @@ title: Hierarchies of Status
 
 Imagine a world where everybody plays a single videogame with a global ranking of players. Exactly one half of all people are above average and one half are below.
 
-<p align="center"><img src="/files/status-hierarchy-1.svg"></p>
+<p align="center"><img src="/files/status-hierarchy-1.svg" width="50%"></p>
 
 Now imagine a world where all the people play two games simultaneously. Assuming their skills at each game are independent, the situation is quite different:
 
 <!--excerpt-->
 
-<p align="center"><img src="/files/status-hierarchy-2.svg"></p>
+<p align="center"><img src="/files/status-hierarchy-2.svg" width="50%"></p>
 
 Now 75% of people are above average! Woohoo!
 
