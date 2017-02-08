@@ -3,6 +3,8 @@ layout: post
 title: A Comment on Dalio
 ---
 
+Alternatively titled, "Why you don't want to reason about economics, without having actually studied economics".
+
 This is an explanation of faulty reasoning in "[How The Economic Machine Works by Ray Dalio](https://www.youtube.com/watch?v=PHe0bXAIuk0)" video, attempted to be clear for people with no ready economic intuition.
 
 The specific claim I have a problem with is "When interest rates are high, there's less borrowing because it's expensive" (time: 4:15).
