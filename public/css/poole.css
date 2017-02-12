@@ -1,4 +1,4 @@
-/*! A crazy mix of HTML5 Boilerplate v5.2.0 and poole css with own additions | MIT License | https://html5boilerplate.com/ https://github.com/poole/poole */
+/*! A mix of HTML5 Boilerplate v5.2.0 and poole css with own additions | MIT License | https://html5boilerplate.com/ https://github.com/poole/poole */
 
 
 * {
@@ -16,7 +16,7 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
