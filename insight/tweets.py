@@ -17,7 +17,6 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/robinhanson/status/547195610265567234",
           "https://twitter.com/existentialcoms/status/559444060184657920",
           "https://twitter.com/sarahdoingthing/status/568933990469513216",
-          "https://twitter.com/GabrielDuquette/status/569949351235207168",
           "https://twitter.com/DeityOfReligion/status/571682760361828352",
           "https://twitter.com/SR71999/status/580165376065081344",
           "https://twitter.com/sarahdoingthing/status/588484939181494272",
@@ -82,4 +81,4 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/robinhanson/status/810281385852276736",
           "https://twitter.com/MakerOfDecision/status/824765574987276289",
           "https://twitter.com/fortelabs/status/835916003766722560"
-         ];
+         ]

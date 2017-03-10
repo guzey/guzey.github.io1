@@ -44,3 +44,10 @@ left-out
 icef/
 !icef/2/matec/matec_notes.pdf
 !icef/2/matec/matec_notes-full.pdf
+
+# too much insight
+insight
+!insight/index.html
+!insight/insights.html
+!insight/tweets.py
+!insight/twitter.js
