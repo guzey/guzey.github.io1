@@ -5,63 +5,87 @@ var ctx = canvas.getContext("2d")
 var height = window.innerHeight
 var width = window.innerWidth
 var isRunning = true
-var brickCount = 300
-var brickWidth = 15
-var brickHeight = 25
-var brickPadding = 10
-var brickOffsetTop = 30
-var OffsetOfTopBrick = brickOffsetTop
-var lineSpeed = 0.2
-var brickOffsetLeft = 30
-var bricks = []
-var currentBrick = 0
-var firstBrick
-for(i=0; i<brickCount; i++) {
-    bricks[i] = { x: 0, y: 0, status: 1 }
+var wordPadding
+var lineSpeed = height*0.0002
+var lineCount = 20
+// var lineHeight = Math.floor(height * 0.05)
+var lineHeight = 32
+var linePadding = lineHeight * 0.5
+var lineOffsetTop = height * 0.1
+if (width < 1050) {
+    var lineOffsetLeft = 16
+} else {
+    lineOffsetLeft = width*0.3
 }
-function drawBricks() {
-    var bricksInRow = 0
-    var currentRow = 0
-    firstBrick = false
-    for(i=0; i<brickCount; i++) {
-        if(bricks[i].status == 1) {
-            if (firstBrick == false) {
-                firstBrick = i
-            }
-            var brickX = (bricksInRow*(brickWidth+brickPadding))+brickOffsetLeft
-            var brickY = (currentRow*(brickHeight+brickPadding))+brickOffsetTop
-            bricks[i].x = brickX
-            bricks[i].y = brickY
-            ctx.beginPath()
-            ctx.rect(brickX, brickY, brickWidth, brickHeight)
-            ctx.fillStyle = "#0095DD"
-            ctx.fill()
-            ctx.closePath()
-        }
-        if (bricksInRow < 4) {
-            bricksInRow++
-        } else {
-            currentRow += 1
-            bricksInRow = 0
-        }
+// will keep track of the word that is currently the first one that is shown
+var firstWord
+
+// tfw when you realize js doesn't support modules yet
+var level1 = 'Death is not real.'
+level1Line = level1.split(' ')
+
+var wordsInRow = level1Line.length
+
+var words = []
+for(l=0; l<lineCount; l++) {
+    words[l] = []
+    for (w=0; w<wordsInRow; w++) {
+        words[l][w] = { x: 0, y: 0, status: 1 }
     }
 }
-function drawText(text) {
-    ctx.font = "48px Open Sans"
-    ctx.fillStyle = "#dd2bda"
-    ctx.fillText(text, 200, 100)
+
+function drawText(text, x, y, size, color) {
+    ctx.font = size+"px Open Sans"
+    ctx.fillStyle = "#"+color
+    ctx.fillText(text, x, y)
+}
+
+
+function drawLines() {
+    var currentWordsInRow = 0
+    var currentRow = 0
+    firstWord = false
+    // draw words!
+    for (l=0; l<lineCount; l++) {
+        wordPadding = 0
+        for (w=0; w<wordsInRow; w++) {
+            ctx.font = lineHeight+"px Open Sans"
+            if (w > 0) {
+                wordPadding += ctx.measureText(level1Line[w-1]+" ").width
+            }
+            if(words[l][w].status == 1) {
+                // this allows us to check whether the first existing word is touching the upper bound, thus
+                // triggering some event
+                if (firstWord == false) {
+                    firstWord = [l,w]
+                }
+                var wordX = wordPadding+lineOffsetLeft
+                var lineY = (currentRow*(lineHeight+linePadding))+lineOffsetTop
+                words[l][w].x = wordX
+                words[l][w].y = lineY
+                drawText(level1Line[w], wordX, lineY, lineHeight, "000000")
+            }
+            if (currentWordsInRow < wordsInRow-1) {
+                currentWordsInRow++
+            } else {
+                currentRow += 1
+                currentWordsInRow = 0
+            }
+        }
+    }
 }
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.canvas.width = width
     ctx.canvas.height = width*1.3
-    drawBricks()
-    if (currentBrick == brickCount) {
-        drawText('You Won!')
-    } else if (bricks[firstBrick].y < 0) {
-        drawText('You Lost!!!!!!')
+    drawLines()
+    // once the last block is done the next is not defined
+    if (firstWord[0] == lineCount-1 && firstWord[1] == wordsInRow-1) {
+        drawText('You Won!', 150, 150, 48, "dd2bda")
+    } else if (words[firstWord[0]][firstWord[1]].y < 0) {
+        drawText('You Lost!!!!!!', 150, 150, "dd2bda")
     } else {
-        brickOffsetTop -= lineSpeed
+        lineOffsetTop -= lineSpeed
     }
     myReq = requestAnimationFrame(draw)
 }
@@ -127,9 +151,8 @@ function clickMenu() {
 
 }
 function clickX() {
-    if( currentBrick < brickCount && isRunning == true ) {
-        bricks[currentBrick].status = 0
-        currentBrick++
+    if( firstWord[0] < lineCount && firstWord[1] < wordsInRow && isRunning == true ) {
+        words[firstWord[0]][firstWord[1]].status = 0
     }
 }
 
