@@ -51,3 +51,6 @@ insight
 !insight/insights.html
 !insight/tweets.py
 !insight/twitter.js
+
+# ignore x files
+todo.txt
