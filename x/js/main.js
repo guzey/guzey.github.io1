@@ -46,7 +46,7 @@ var l10 = ['YOUR'.split(' '), 1]
 var l11 = ['OWN'.split(' '), 1]
 var l12 = ['MORTALITY'.split(' '), 1]
 var l16 = ['Death is not real.'.split(' '), 1]
-var l19 = ['Death is not real.'.split(' '), 16, 15]
+var l19 = ['Death is not real.'.split(' '), 18, 15]
 var l20 = ['Death'.split(' '), 1]
 var l21 = ['is'.split(' '), 1]
 var l22 = ['not'.split(' '), 1]
@@ -55,47 +55,50 @@ var l24 = ['oh.'.split(' '), 1]
 var l25 = ['ok.'.split(' '), 1]
 var l26 = ['maybe'.split(' '), 1]
 var l27 = ['it'.split(' '), 1]
-var l28 = ['is'.split(' '), 1]
+var l28 = ['is.'.split(' '), 1]
 var l30 = ['but'.split(' '), 1]
 var l31 = ['We will solve death.'.split(' '), 1]
-var l32 = ['We will solve death.'.split(' '), 16, 15]
+var l32 = ['We will solve death.'.split(' '), 18, 15]
 var l33 = ['We'.split(' '), 1]
 var l34 = ['will'.split(' '), 1]
 var l35 = ['solve'.split(' '), 1]
 var l36 = ['death'.split(' '), 1]
-var l37 = ['oh.'.split(' '), 1]
+var l37 = ['well.'.split(' '), 1]
 var l38 = ['ok.'.split(' '), 1]
 var l39 = ['maybe'.split(' '), 1]
-var l40 = ['the humanity'.split(' '), 1]
-var l41 = ['won\'t,'.split(' '), 1]
+var l40 = ['humanity'.split(' '), 1]
+var l41 = ['won\'t.'.split(' '), 1]
 var l42 = ['but'.split(' '), 1]
-var l43 = ['I will solve death.'.split(' '), 1]
-var l44 = ['I will solve death.'.split(' '), 16, 15]
-var l45 = ['I'.split(' '), 1]
-var l46 = ['will'.split(' '), 1]
-var l47 = ['solve'.split(' '), 1]
-var l48 = ['death.'.split(' '), 1]
-var l49 = ['but,'.split(' '), 1]
-var l50 = ['I\'m'.split(' '), 1]
-var l51 = ['going'.split(' '), 1]
-var l52 = ['to'.split(' '), 1]
-var l53 = ['die.'.split(' '), 1]
-// var l100 = ['I will die.'.split(' '), 1]
+var l43 = ['still'.split(' '), 1]
+var l44 = ['I'.split(' '), 1]
+var l45 = ['will'.split(' '), 1]
+var l46 = ['not'.split(' '), 1]
+var l47 = ['die.'.split(' '), 1]
+var l48 = ['I will not die.'.split(' '), 10, 20]
+var l49 = ['I'.split(' '), 1]
+var l50 = ['refuse'.split(' '), 1]
+var l51 = ['to'.split(' '), 1]
+var l52 = ['come'.split(' '), 1]
+var l53 = ['to'.split(' '), 1]
+var l54 = ['terms'.split(' '), 1]
+var l55 = ['with'.split(' '), 1]
+var l56 = ['my'.split(' '), 1]
+var l57 = ['own'.split(' '), 1]
+var l58 = ['mortality.'.split(' '), 1]
+// the final level has 4 parameters so I could identify it by length :/
+var l100 = ['I will not die.'.split(' '), 1, 100, 0]
 
-// var gameLevels = [l12, l1, l2, l16, l16, l16, l20, l21, l22, l23]
 var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12,
     l16, l19, l20, l21, l22, l23, l24, l16, l25, l16, l26, l16, l27, l16, l28, l16, l30,
-l31, l31, l31, l32, l33, l34, l35, l36, l31, l37, l31, l38, l31, l39, l31, l40, l31, l41, l31, l42, l43, l43, l43,
-l44, l45, l46, l47, l48, l49, l49, l49, l50, l51, l52, l53]
-// var gameLevels = [l31]
-// var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l16, l17, l18, l19]
-// var gameLevels = [l19]
-// var gameLevels = [l0, l16, l19]
-// var gameLevels = [l19, l7]
+l31, l31, l31, l32, l33, l34, l35, l36, l31, l37, l31, l38, l31, l39, l31, l40, l31, l41, l31, l42, l43,
+l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55, l56, l57, l58,
+l100, l100, l100, l100, l100, l100, l100, l100, l100, l100]
+
 var numLevels = gameLevels.length
 var currentLevelNum = 0
 var currentLevel = gameLevels[currentLevelNum]
 var timeAtLevelStart
+var finalCount = 0
 
 // creates a matrix of level's words to align them later and check if they need to be shown
 function createLevelsWords() {
@@ -121,6 +124,12 @@ function drawLevel() {
             ctx.font = lineHeight + 'px Open Sans'
             if (w > 0) {
                 wordPadding += ctx.measureText(currentLevel[0][w - 1] + ' ').width
+            }
+            // this hides 'not' during the last levels
+            if (currentLevel.length == 4 && w == 3) {
+                ctx.clearRect(wordPadding + lineOffsetLeft - (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount, lineOffsetTop-lineHeight, ctx.measureText(currentLevel[0][2] + ' ').width, lineHeight+5)
+                // this moves 'die' closer to 'will'; not sure which way is better
+                // wordPadding -= (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount
             }
             if (words[l][w].status == 1) {
                 // if there's only one word in the row
@@ -153,7 +162,6 @@ function drawLevel() {
             startNextLevel()
         }
     }
-
     requestAnimationFrame(function () {
         drawLevel()
     })
@@ -161,6 +169,9 @@ function drawLevel() {
 
 // starts next level and ends the game
 function startNextLevel() {
+    if (currentLevel.length == 4) {
+        finalCount += 1
+    }
     currentLevelNum += 1
     flicker()
     if (currentLevelNum < numLevels) {
