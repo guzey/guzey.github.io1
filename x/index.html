@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <title>X</title>
@@ -12,17 +12,23 @@
 </head>
 <body>
 
-<canvas id="gameCanvas"></canvas>
-<canvas id="interfaceCanvas"></canvas>
-<div id="interface">
-    <div id="menuButton" class="menu_button">
-        <p id="menuButton-text" style="line-height: 1.6; font-weight: 600;">MENU</p>
+<div id="game">
+    <canvas id="gameCanvas"></canvas>
+    <div id="inspired" class="menu">
+    <!--<a href="https://twitter.com/pippinbarr/status/728221029395509252" target="_blank">-->
+    <!--<p style="line-height: 1.2; font-weight: 600;">inspired by</p>-->
+    <!--</a>-->
     </div>
-    <div id="YButton" class="interface_button">
-        <p id="YButton-text" style="line-height: 1.2; font-weight: 700;">Y</p>
-    </div>
-    <div id="XButton" class="interface_button">
-        <p id="Xbutton-text" style="line-height: 1.2; font-weight: 700;">X</p>
+    <div id="interface">
+        <div id="openMenuButton" class="open_menu_button">
+            <p style="line-height: 1.6; font-weight: 600;">MENU</p>
+        </div>
+        <div id="YButton" class="interface_button">
+            <p style="line-height: 1.2; font-weight: 700;">Y</p>
+        </div>
+        <div id="XButton" class="interface_button">
+            <p style="line-height: 1.2; font-weight: 700;">X</p>
+        </div>
     </div>
 </div>
 <script src="js/main.js"></script>

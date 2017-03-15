@@ -10,6 +10,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.game {
+    position: relative;
+}
+
 #gameCanvas {
     background: #dfdfdf;
     position: absolute;
@@ -40,7 +44,7 @@ body {
 .interface_button:active {
     background-color: #666666;
 }
-.menu_button {
+.open_menu_button {
     background-color: #8f8f8f;
     color: #48488d;
     box-shadow: 2px 3px 0px 0px #899599;
@@ -50,9 +54,24 @@ body {
     user-select: none;
     text-align: center;
 }
-.menu_button:hover {
+.open_menu_button:hover {
     background-color: #888888;
 }
-.menu_button:active {
+.open_menu_button:active {
     background-color: #666666;
+}
+#menu {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: #8f8f8f;
+    color: #48488d;
+    box-shadow: 3px 4px 0px 0px #899599;
+    border: 1px solid #636363;
+    cursor: pointer;
+    text-shadow: 0px 1px 0px #2f6627;
+    user-select: none;
+    text-align: center;
 }
