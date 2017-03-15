@@ -6,11 +6,8 @@ ctx.canvas.width = width
 ctx.canvas.height = width*1.3
 var isRunning = true
 
-var alpha = 1
-delta = 0.1
-
 var wordPadding
-var lineSpeed = height*0.00004
+var lineSpeed = height*0.00006
 // var lineCount = 3
 var lineCount
 if (width < 1050) {
@@ -49,13 +46,13 @@ var l12 = ['MORTALITY'.split(' '), 1 ]
 var l16 = ['Death is not real.'.split(' '), 1]
 var l17 = ['Death is not real.'.split(' '), 1]
 var l18 = ['Death is not real.'.split(' '), 1]
-var l19 = ['Death is not real.'.split(' '), 20, 15]
-var l14 = ['Death is not real.'.split(' '), 1]
+var l19 = ['Death is not real.'.split(' '), 15, 15]
+var l20 = ['Death is not real.'.split(' '), 1]
 
-// var gameLevels = [l12, l1, l2, l16, l17, l18, l19, l17]
-var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l16, l17, l18, l19]
+var gameLevels = [l12, l1, l2, l16, l17, l18, l19, l17]
+// var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l16, l17, l18, l19]
 // var gameLevels = [l19]
-// var gameLevels = [l0, l19]
+// var gameLevels = [l0, l16, l19]
 // var gameLevels = [l19, l7]
 var numLevels = gameLevels.length
 var currentLevelNum = 0
@@ -83,9 +80,6 @@ function createLevelsWords() {
 
 function drawLevel() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.globalAlpha = 1
-    var currentWordsInRow = 0
-    var currentRow = 0
     firstWord = false
     // draw words!
     for (l=0; l<lineCount; l++) {
@@ -100,27 +94,15 @@ function drawLevel() {
                 if (wordsInRow == 1) {
                     ctx.textAlign = "center"
                     var wordX = width/2
-                    // var lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
                 } else {
                     ctx.textAlign = "left"
                     wordX = wordPadding + lineOffsetLeft
                 }
-                var lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
-                // this allows us to check whether the first existing word is touching the upper bound, thus
-                // triggering some event
+                var lineY = (l * (lineHeight + linePadding)) + lineOffsetTop
                 if (firstWord == false) {
                     firstWord = [l, w]
-                    words[l][w].x = wordX
-                    words[l][w].y = lineY
                 }
                 drawText(currentLevel[0][w], wordX, lineY, lineHeight, "000000")
-            } else if (l == lastWordL && w == lastWordW) {
-            }
-            if (currentWordsInRow < wordsInRow - 1) {
-                currentWordsInRow++
-            } else {
-                currentRow += 1
-                currentWordsInRow = 0
             }
         }
     }
@@ -150,14 +132,14 @@ function startNextLevel() {
         runLevel(currentLevel)
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        setBackground("#dfdfdf")
         drawText('That\'s it!', 50, 150, 32, "0d2bda")
-        // break
     }
 }
 
 function runLevel() {
     createLevelsWords()
-
+    timeAtLevelStart = Date.now()
     if (wordsInRow == 1) {
         if (width < 1050) {
             lineHeight = 64
@@ -168,6 +150,8 @@ function runLevel() {
         }
         linePadding = lineHeight * 0.5
         lineOffsetTop = lineHeight * 1.5
+
+        drawLevel()
     } else {
         if (width < 1050) {
             lineHeight = 32
@@ -178,14 +162,11 @@ function runLevel() {
         }
         linePadding = lineHeight * 0.5
         lineOffsetTop = lineHeight * 1.5
+        drawLevel()
     }
-    timeAtLevelStart = Date.now()
-    drawLevel()
 }
 
-//
 // drawing the buttons
-//
 var menuButton = document.getElementById('menuButton')
 var YButton = document.getElementById("YButton")
 var XButton = document.getElementById("XButton")
@@ -234,7 +215,6 @@ var derp
 
 function flicker() {
     setBackground("#ffffff")
-    // setBackground("#dfdfdf")
     derp = window.setTimeout(function() {setBackground("#dfdfdf")}, 5)
 }
 
@@ -256,25 +236,12 @@ function clickMenu() {
 
 }
 
-function loop() {
-
-    alpha = 1;
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.globalAlpha = 1;
-    drawText('Yolelu Won!', 100, 150, 48, "dd2bda")
-
-    if (alpha > 0) {
-        requestAnimationFrame(loop);
-    }
-
-}
 function clickX() {
     if( firstWord[0] < lineCount && firstWord[1] < wordsInRow && isRunning == true ) {
         lastWordL = firstWord[0]
         lastWordW = firstWord[1]
         words[lastWordL][lastWordW].status = 0
         if (wordsInRow == 1) {
-            // loop()
         }
     }
 }
