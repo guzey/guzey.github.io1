@@ -6,8 +6,11 @@ ctx.canvas.width = width
 ctx.canvas.height = width*1.3
 var isRunning = true
 
+var alpha = 1
+delta = 0.1
+
 var wordPadding
-var lineSpeed = height*0.0001
+var lineSpeed = height*0.00004
 // var lineCount = 3
 var lineCount
 if (width < 1050) {
@@ -46,11 +49,11 @@ var l12 = ['MORTALITY'.split(' '), 1 ]
 var l16 = ['Death is not real.'.split(' '), 1]
 var l17 = ['Death is not real.'.split(' '), 1]
 var l18 = ['Death is not real.'.split(' '), 1]
-var l19 = ['Death is not real.'.split(' '), 2, 5]
+var l19 = ['Death is not real.'.split(' '), 20, 15]
 var l14 = ['Death is not real.'.split(' '), 1]
 
 // var gameLevels = [l12, l1, l2, l16, l17, l18, l19, l17]
-var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l14, l19]
+var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l16, l17, l18, l19]
 // var gameLevels = [l19]
 // var gameLevels = [l0, l19]
 // var gameLevels = [l19, l7]
@@ -80,6 +83,7 @@ function createLevelsWords() {
 
 function drawLevel() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.globalAlpha = 1
     var currentWordsInRow = 0
     var currentRow = 0
     firstWord = false
@@ -92,15 +96,16 @@ function drawLevel() {
                 wordPadding += ctx.measureText(currentLevel[0][w - 1] + " ").width
             }
             if (words[l][w].status == 1) {
+                // if there's only one word in the row
                 if (wordsInRow == 1) {
                     ctx.textAlign = "center"
                     var wordX = width/2
-                    var lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
+                    // var lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
                 } else {
                     ctx.textAlign = "left"
                     wordX = wordPadding + lineOffsetLeft
-                    lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
                 }
+                var lineY = (currentRow * (lineHeight + linePadding)) + lineOffsetTop
                 // this allows us to check whether the first existing word is touching the upper bound, thus
                 // triggering some event
                 if (firstWord == false) {
@@ -127,7 +132,6 @@ function drawLevel() {
     else if (currentLevel[1] > 1 && isRunning == true) {
         if (Date.now()-timeAtLevelStart < currentLevel[2]*1000) {
             lineOffsetTop -= lineSpeed
-            drawText(Date.now(), 50, 250, 48, "dd2bda")
         } else {
             startNextLevel()
         }
@@ -140,6 +144,7 @@ function drawLevel() {
 
 function startNextLevel() {
     currentLevelNum += 1
+    flicker()
     if (currentLevelNum < numLevels) {
         currentLevel = gameLevels[currentLevelNum]
         runLevel(currentLevel)
@@ -225,6 +230,18 @@ function drawMenu() {
     XButton.style.fontSize = height*0.065+'px'
 }
 
+var derp
+
+function flicker() {
+    setBackground("#ffffff")
+    // setBackground("#dfdfdf")
+    derp = window.setTimeout(function() {setBackground("#dfdfdf")}, 5)
+}
+
+function setBackground(color) {
+    document.getElementById("gameCanvas").style.backgroundColor = color
+}
+
 function openMenu() {
 
 }
@@ -238,11 +255,27 @@ function clickMenu() {
     isRunning = !isRunning
 
 }
+
+function loop() {
+
+    alpha = 1;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.globalAlpha = 1;
+    drawText('Yolelu Won!', 100, 150, 48, "dd2bda")
+
+    if (alpha > 0) {
+        requestAnimationFrame(loop);
+    }
+
+}
 function clickX() {
     if( firstWord[0] < lineCount && firstWord[1] < wordsInRow && isRunning == true ) {
         lastWordL = firstWord[0]
         lastWordW = firstWord[1]
         words[lastWordL][lastWordW].status = 0
+        if (wordsInRow == 1) {
+            // loop()
+        }
     }
 }
 
