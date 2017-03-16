@@ -14,7 +14,6 @@ author:
 
 # Menu
 pages_list:
-  Insight Porn: '/insight'
   Blog: '/blog'
   Feed: '/atom.xml'
   Site Contents: '/site-contents'
