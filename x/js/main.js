@@ -74,7 +74,7 @@ var l44 = ['I'.split(' '), 1]
 var l45 = ['will'.split(' '), 1]
 var l46 = ['not'.split(' '), 1]
 var l47 = ['die.'.split(' '), 1]
-var l48 = ['I will not die.'.split(' '), 10, 20]
+var l48 = ['I will not die.'.split(' '), 8, 20]
 var l49 = ['I'.split(' '), 1]
 var l50 = ['refuse'.split(' '), 1]
 var l51 = ['to'.split(' '), 1]
@@ -92,7 +92,7 @@ var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12,
     l16, l19, l20, l21, l22, l23, l24, l16, l25, l16, l26, l16, l27, l16, l28, l16, l30,
 l31, l31, l32, l33, l34, l35, l36, l31, l37, l31, l38, l31, l39, l31, l40, l31, l41, l31, l42, l43,
 l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55, l56, l57, l58,
-l100, l100, l100, l100, l100, l100, l100, l100, l100, l100]
+l100, l100, l100, l100, l100, l100, l100, l100]
 
 var numLevels = gameLevels.length
 var currentLevelNum = 0
@@ -128,7 +128,7 @@ function drawLevel() {
                 }
                 // this hides 'not' during the last levels
                 if (currentLevel.length == 4 && w == 3) {
-                    ctx.clearRect(wordPadding + lineOffsetLeft - (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount, lineOffsetTop-lineHeight, ctx.measureText(currentLevel[0][2] + ' ').width, lineHeight+5)
+                    ctx.clearRect(wordPadding + lineOffsetLeft - (ctx.measureText(currentLevel[0][2] + ' ').width / 7) * finalCount, lineOffsetTop-lineHeight, ctx.measureText(currentLevel[0][2] + ' ').width, lineHeight+5)
                     // this moves 'die' closer to 'will'; not sure which way is better
                     // wordPadding -= (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount
                 }
@@ -144,7 +144,7 @@ function drawLevel() {
                     if (firstWord == false) {
                         firstWord = [l, w]
                     }
-                    ctx.font = lineHeight + 'px Open Sans'
+                    ctx.font = lineHeight + 'px IM Fell French Canon'
                     ctx.textAlign = textPosition
                     ctx.fillStyle = '#000000'
                     ctx.fillText(currentLevel[0][w], wordX, lineY)
