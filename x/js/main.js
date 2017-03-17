@@ -46,7 +46,7 @@ var l10 = ['YOUR'.split(' '), 1]
 var l11 = ['OWN'.split(' '), 1]
 var l12 = ['MORTALITY'.split(' '), 1]
 var l16 = ['Death is not real.'.split(' '), 1]
-var l19 = ['Death is not real.'.split(' '), 18, 15]
+var l19 = ['Death is not real.'.split(' '), 30, 15]
 var l20 = ['Death'.split(' '), 1]
 var l21 = ['is'.split(' '), 1]
 var l22 = ['not'.split(' '), 1]
@@ -58,7 +58,7 @@ var l27 = ['it'.split(' '), 1]
 var l28 = ['is.'.split(' '), 1]
 var l30 = ['but'.split(' '), 1]
 var l31 = ['We will solve death.'.split(' '), 1]
-var l32 = ['We will solve death.'.split(' '), 18, 15]
+var l32 = ['We will solve death.'.split(' '), 30, 15]
 var l33 = ['We'.split(' '), 1]
 var l34 = ['will'.split(' '), 1]
 var l35 = ['solve'.split(' '), 1]
@@ -90,7 +90,7 @@ var l100 = ['I will not die.'.split(' '), 1, 100, 0]
 
 var gameLevels = [l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12,
     l16, l19, l20, l21, l22, l23, l24, l16, l25, l16, l26, l16, l27, l16, l28, l16, l30,
-l31, l31, l31, l32, l33, l34, l35, l36, l31, l37, l31, l38, l31, l39, l31, l40, l31, l41, l31, l42, l43,
+l31, l31, l32, l33, l34, l35, l36, l31, l37, l31, l38, l31, l39, l31, l40, l31, l41, l31, l42, l43,
 l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55, l56, l57, l58,
 l100, l100, l100, l100, l100, l100, l100, l100, l100, l100]
 
@@ -120,34 +120,35 @@ function drawLevel() {
     // draw words!
     for (l = 0; l < lineCount; l++) {
         wordPadding = 0
+        var lineY = (l * (lineHeight + linePadding)) + lineOffsetTop
         for (w = 0; w < wordsInRow; w++) {
-            ctx.font = lineHeight + 'px Open Sans'
-            if (w > 0) {
-                wordPadding += ctx.measureText(currentLevel[0][w - 1] + ' ').width
-            }
-            // this hides 'not' during the last levels
-            if (currentLevel.length == 4 && w == 3) {
-                ctx.clearRect(wordPadding + lineOffsetLeft - (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount, lineOffsetTop-lineHeight, ctx.measureText(currentLevel[0][2] + ' ').width, lineHeight+5)
-                // this moves 'die' closer to 'will'; not sure which way is better
-                // wordPadding -= (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount
-            }
-            if (words[l][w].status == 1) {
-                // if there's only one word in the row
-                if (wordsInRow == 1) {
-                    var textPosition = 'center'
-                    var wordX = width / 2
-                } else {
-                    textPosition = 'left'
-                    wordX = wordPadding + lineOffsetLeft
+            if (lineY < height * 0.7 + lineHeight) {
+                if (w > 0) {
+                    wordPadding += ctx.measureText(currentLevel[0][w - 1] + ' ').width
                 }
-                var lineY = (l * (lineHeight + linePadding)) + lineOffsetTop
-                if (firstWord == false) {
-                    firstWord = [l, w]
+                // this hides 'not' during the last levels
+                if (currentLevel.length == 4 && w == 3) {
+                    ctx.clearRect(wordPadding + lineOffsetLeft - (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount, lineOffsetTop-lineHeight, ctx.measureText(currentLevel[0][2] + ' ').width, lineHeight+5)
+                    // this moves 'die' closer to 'will'; not sure which way is better
+                    // wordPadding -= (ctx.measureText(currentLevel[0][2] + ' ').width / 9) * finalCount
                 }
-                ctx.font = lineHeight + 'px Open Sans'
-                ctx.textAlign = textPosition
-                ctx.fillStyle = '#000000'
-                ctx.fillText(currentLevel[0][w], wordX, lineY)
+                if (words[l][w].status == 1) {
+                    // if there's only one word in the row
+                    if (wordsInRow == 1) {
+                        var textPosition = 'center'
+                        var wordX = width / 2
+                    } else {
+                        textPosition = 'left'
+                        wordX = wordPadding + lineOffsetLeft
+                    }
+                    if (firstWord == false) {
+                        firstWord = [l, w]
+                    }
+                    ctx.font = lineHeight + 'px Open Sans'
+                    ctx.textAlign = textPosition
+                    ctx.fillStyle = '#000000'
+                    ctx.fillText(currentLevel[0][w], wordX, lineY)
+                }
             }
         }
     }
