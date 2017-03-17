@@ -4,8 +4,8 @@ ctx.textBaseline = 'middle'
 
 var height = window.innerHeight
 var width = window.innerWidth
-ctx.canvas.width = width
-ctx.canvas.height = width * 1.3
+canvas.width = width
+canvas.height = 0.7 * height
 var isRunning = true
 var endGame = false
 
@@ -99,6 +99,16 @@ var currentLevelNum = 0
 var currentLevel = gameLevels[currentLevelNum]
 var timeAtLevelStart
 var finalCount = 0
+
+// makes canvas non-blurry on high dpi screens (https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina)
+pixelRatio = window.devicePixelRatio
+if (window.devicePixelRatio != 1) {
+    canvas.width = pixelRatio * width
+    canvas.height = pixelRatio * 0.7 * height
+    canvas.style.width = 1 / pixelRatio * canvas.width + 'px';
+    canvas.style.height = 1 / pixelRatio * canvas.height + 'px';
+    ctx.scale(pixelRatio,pixelRatio)
+}
 
 // creates a matrix of level's words to align them later and check if they need to be shown
 function createLevelsWords() {
