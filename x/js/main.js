@@ -198,11 +198,9 @@ function runLevel() {
     timeAtLevelStart = Date.now()
     if (wordsInRow == 1) {
         if (width < 1000) {
-            lineHeight = 64
-            lineOffsetLeft = 32
+            lineHeight = width / 6
         } else {
-            lineHeight = 128
-            lineOffsetLeft = width * 0.3
+            lineHeight = width / 6
         }
         linePadding = lineHeight * 0.5
         lineOffsetTop = lineHeight * 1.5
