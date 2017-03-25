@@ -363,9 +363,7 @@ function drawInterface() {
 
 function clickX() {
     if (firstWord[0] < lineCount && firstWord[1] < wordsInRow && isRunning == true) {
-        lastWordL = firstWord[0]
-        lastWordW = firstWord[1]
-        words[lastWordL][lastWordW].status = 0
+        words[firstWord[0]][firstWord[1]].status = 0
     }
 }
 
