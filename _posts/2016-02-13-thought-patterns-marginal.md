@@ -21,7 +21,7 @@ Why is this post called "marginal" and why should this work at all? Because the 
 
 Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it", which lasts much longer and, hopefully, causes some cognitive dissonance.
 
-## Dec 2016 update: Wait, but does it *actually* work?
+### Dec 2016 update: Wait, but does it *actually* work?
 
 It totally does:
 
@@ -40,6 +40,18 @@ Then go to deck options and create a new Options group. Key settings are:
 3. Easy interval -- 1 day
 4. Interval modifier -- anything less than 100% (otherwise 1 day limit would be ignored)
 5. Maximum interval -- 1 day
+
+### Mar 2017 update: my favorite thought-pattern yet
+
+Front card:
+
+>saying no
+
+Back card:
+
+>If I want to say no, I will stop and make sure this is not just status quo bias (coz it probably is)
+
+Status quo bias sucks. Does this one solve it? Beautifully so. Although several months had passed before it finally kicked in, the number of times I noticed saying "no" out of status quo bias, then having this thought come up and make me retroactively reverse the initial "no" is in the tens already.
 
 ## Further Reading
 
