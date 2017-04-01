@@ -76,3 +76,7 @@ body {
     user-select: none;
     text-align: center;
 }
+
+#YButton_ref {
+    display: none;
+}
