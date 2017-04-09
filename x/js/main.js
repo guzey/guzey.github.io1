@@ -27,8 +27,6 @@ var wordsInRow
 
 var openMenuButton = document.getElementById('openMenuButton')
 var YButton = document.getElementById('YButton')
-var YButton_was_clicked = false
-var YButton_ref = document.getElementById('YButton_ref')
 var XButton = document.getElementById('XButton')
 var menuButtons
 
@@ -340,18 +338,6 @@ function drawInterface() {
     YButton.style.borderRadius = height * 0.04 + 'px'
     YButton.style.fontSize = height * 0.065 + 'px'
 
-    YButton_ref.style.position = 'absolute'
-    YButton_ref.style.top = height * 0.18 + 'px'
-    if (width < 1050) {
-        YButton_ref.style.left = width * 0.73 + 'px'
-    } else {
-        YButton_ref.style.left = width * 0.65 + 'px'
-    }
-    YButton_ref.style.width = width * 0.27 + 'px'
-    YButton_ref.style.height = height * 0.08 + 'px'
-    YButton_ref.style.borderRadius = height * 0.04 + 'px'
-    YButton_ref.style.fontSize = height * 0.02 + 'px'
-
     XButton.style.position = 'absolute'
     XButton.style.top = height * 0.13 + 'px'
     if (width < 1050) {
@@ -381,26 +367,8 @@ function clickX() {
     }
 }
 
-function clickY() {
-    if (YButton_was_clicked == false) {
-        YButton_ref.style.display = 'inline'
-        YButton_was_clicked = true
-    } else {
-        YButton_ref.style.display = 'none'
-        YButton_was_clicked = false
-    }
-
-        // XButton.style.display = 'none'
-        // YButton.style.display = 'none'
-        // openMenuButton.style.backgroundColor = '#000000'
-        // openMenuButton.style.boxShadow = 'none'
-        // openMenuButton.style.border = 'none'
-        // openMenuButton.style.color = '#ffffff'
-}
-
 openMenuButton.addEventListener('click', clickMenu, false)
 XButton.addEventListener('click', clickX, false)
-YButton.addEventListener('click', clickY, false)
 
 drawInterface()
 runLevel()
