@@ -7,7 +7,7 @@
 
 html {
     color: #222;
-    background-color: #fcfcfc;
+    background-color: #f7fff7;
 }
 
 body {
@@ -61,12 +61,12 @@ h1 {
     line-height: 52px
 }
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-}
-h3 {
   margin-top: 24px;
   font-size: 24px;
+}
+h3 {
+  margin-top: 20px;
+  font-size: 20px;
 }
 h4, h5, h6 {
   margin-top: 1rem;
