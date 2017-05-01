@@ -29,7 +29,7 @@ In fact, in the present model, if hierarchies are transprent, there's very likel
 
 ## Conclusion
 
-Obfuscating hierarchies should probably help. In fact, this is what norms against wage disclosure are probably [about](https://www.youtube.com/watch?v=1bO8zEaSuWg) (Perez-truglia, 2016), (Card, Mas, Moretti, & Saez, 2010), (Brown, Gardner, Oswald, & Qian, 2008). But universality of this strategy is questionable.
+Obfuscating hierarchies should probably help. In fact, this is what norms against wage disclosure are probably [about](https://www.youtube.com/watch?v=1bO8zEaSuWg). But the universality of this strategy is questionable.
 
 Still, I really like this model as a basis for thinking about the world, as, personally, I can employ advanced epistemology to extend the dimensions to infinity, believe weightings to impossible, pretend hierarchies to be completely obfuscated, etc. and live in complete peace with myself and others.
 
@@ -47,12 +47,6 @@ My thinking on the topic is heavily influenced by Slate Star Codex's Scott Alexa
 
 ## References
 
-Brown, G. D. A., Gardner, J., Oswald, A. J., & Qian, J. (2008). [Does Wage Rank Affect Employees’ Well‐being?](http://ftp.iza.org/dp1505.pdf) *Industrial Relations: A Journal of Economy and Society*, 47(3), 355–389. http://doi.org/10.1111/J.1468-232X.2008.00525.X
-
-Card, D., Mas, A., Moretti, E., & Saez, E. (2011). [Inequality at Work: The Effect of Peer Salaries on Job Satisfaction](https://www.princeton.edu/~amas/papers/card-mas-moretti-saezAER11ucpay).
-
 Cheng, J. T., Tracy, J. L., Foulsham, T., Kingstone, A., & Henrich, J. (2013). [Two ways to the top: evidence that dominance and prestige are distinct yet viable avenues to social rank and influence](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.368.3973&rep=rep1&type=pdf). *Journal of Personality and Social Psychology*, 104(1), 103–25. http://doi.org/10.1037/a0030398
-
-Perez-truglia, R. (2016). [The Effects of Income Transparency on Well-Being Evidence from a Natural Experiment](http://ssrn.com/abstract=2657808).
 
 Von Rueden, C., Gurven, M., & Kaplan, H. (2008). [The multiple dimensions of male social status in an Amazonian society](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2598750/). *Evolution and Human Behavior : Official Journal of the Human Behavior and Evolution Society*, 29(6), 402–415. http://doi.org/10.1016/j.evolhumbehav.2008.05.001
