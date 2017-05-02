@@ -81,5 +81,7 @@ tweets = ["https://twitter.com/HiFromMichaelV/status/16952165247488001",
           "https://twitter.com/robinhanson/status/810281385852276736",
           "https://twitter.com/MakerOfDecision/status/824765574987276289",
           "https://twitter.com/preinfarction/status/833585927444381696",
-          "https://twitter.com/fortelabs/status/835916003766722560"
+          "https://twitter.com/CurlOfGradient/status/835135721539309570",
+          "https://twitter.com/fortelabs/status/835916003766722560",
+          "https://twitter.com/InstanceOfClass/status/837780899760504832"
          ]
