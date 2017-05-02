@@ -8,7 +8,6 @@ title: Site Contents
 - ## Miscellanea
     - [RAPIDLY PRESS X TO REFUSE TO COME TO TERMS WITH YOUR OWN MORTALITY](../x)
     - [Tweet-Sized Insight Porn](../insight)
-    - [Focus-Meter](../focus-meter)
 
 - ## Blog Archive
 {% for post in site.posts %}
