@@ -1,0 +1,27 @@
+---
+layout: default
+title: Tweet-Sized Insight Porn
+---
+<script src="tweets.py"></script>
+<script src="twitter.js"></script>
+
+<div style="max-width: 800px; margin: 0px 64px 64px 64px">
+    <h1>Tweet-Sized Insight Porn</h1>
+    <br>
+    <a href="javascript:location.reload()" style="text-decoration: none; text-align: center; font-size: 24px; font-style: italic;">
+        <div class="moar">
+            <p>Don't stop! Why did you stop?</p>
+        </div>
+    </a>
+    <br>
+    <script>
+        tweetnumber = Math.round(Math.random() * (tweets.length - 1));
+        document.write("<blockquote class=\"twitter-tweet\" lang=\"en\" align=\"center\"><a href=\"" + tweets[tweetnumber] + "\"></a></blockquote>");
+    </script>
+    <div style="margin-top: 30px;">
+        <p style="text-align: center;">
+            Tweet me your suggestions <a href="https://twitter.com/alex_guzey">@alex_guzey</a>!
+            <br>
+            <a href="insights.html">All insight tweets</a></p </div>
+
+    </div>

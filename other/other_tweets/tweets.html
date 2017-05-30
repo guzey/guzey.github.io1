@@ -1,0 +1,16 @@
+---
+layout: default
+title: all other tweets
+---
+
+<script src="tweets.py">
+</script>
+<script src="twitter.js"></script>
+<div class="main">
+    <script>
+        for (j = tweets.length; j > 0; j--) {
+            document.write("<blockquote class=\"twitter-tweet\" lang=\"en\" align=\"center\"><a href=\"" + tweets[j - 1] + "\"></a></blockquote>");
+        }
+    </script>
+
+</div>

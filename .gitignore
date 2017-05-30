@@ -52,5 +52,13 @@ insight
 !insight/tweets.py
 !insight/twitter.js
 
+# too much of twitter generally
+
+other
+!other/other_tweets/index.html
+!other/other_tweets/tweets.html
+!other/other_tweets/tweets.py
+!other/other_tweets/twitter.js
+
 # ignore x files
 todo.txt
