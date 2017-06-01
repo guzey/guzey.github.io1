@@ -1,5 +1,4 @@
-tweets =   ["https://twitter.com/NightValeRadio/status/314379817623617536",
-            "https://twitter.com/admittedlyhuman/status/388904525202862080",
+tweets =   ["https://twitter.com/admittedlyhuman/status/388904525202862080",
             "https://twitter.com/TheViewFromHell/status/405300796603920384",
             "https://twitter.com/admittedlyhuman/status/414574020600684544",
             "https://twitter.com/gwern/status/465138689522163713",
