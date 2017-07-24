@@ -9,7 +9,7 @@ paginate_path: 	     "/blog/page:num"
 
 author:
   name:              Alexey Guzey
-  url:               https://twitter.com/alex_guzey
+  url:               https://twitter.com/alexeyguzey
   email:             alexey@guzey.com
 
 # Menu

@@ -257,7 +257,7 @@ canvas.addEventListener('click', function (event) {
         var mousePosition = getMousePosition(canvas, event)
         if (mousePosition.x > menuButtons.x && mousePosition.x < menuButtons.x + menuButtons.buttonWidth) {
             if (mousePosition.y < menuButtons.y1 + menuButtons.buttonHeight && mousePosition.y > menuButtons.y1) {
-                window.open('https://twitter.com/alex_guzey')
+                window.open('https://twitter.com/alexeyguzey')
             } else if (mousePosition.y < menuButtons.y2 + menuButtons.buttonHeight && mousePosition.y > menuButtons.y2) {
                 window.open('https://twitter.com/pippinbarr/status/728221029395509252')
             } else if (mousePosition.y < menuButtons.y3 + menuButtons.buttonHeight && mousePosition.y > menuButtons.y3) {
@@ -285,7 +285,7 @@ function drawMenu() {
             ctx.fillStyle = '#ffffff'
         }
 
-        ctx.fillText('by @alex_guzey', width / 2, menuButtons.y1 + (menuButtons.buttonHeight / 1.5))
+        ctx.fillText('by @alexeyguzey', width / 2, menuButtons.y1 + (menuButtons.buttonHeight / 1.5))
         ctx.fillText('inspired by', width / 2, menuButtons.y2 + (menuButtons.buttonHeight / 1.5))
         ctx.fillText('homepage', width / 2, menuButtons.y3 + (menuButtons.buttonHeight / 1.5))
         ctx.fillText('source code', width / 2, menuButtons.y4 + (menuButtons.buttonHeight / 1.5))
