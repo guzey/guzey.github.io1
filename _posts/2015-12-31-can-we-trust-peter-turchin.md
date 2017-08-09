@@ -3,7 +3,7 @@ layout: post
 title: Can We Trust Peter Turchin?
 ---
 
-**Edit:** Peter Turchin [wrote a response to this on his blog](http://peterturchin.com/blog/2016/02/12/pay-equality-and-team-performance-in-major-league-baseball/). My response is [at the end of this post](/blog/can-we-trust-peter-turchin#response_to_turchin).
+**Edit:** Peter Turchin [wrote a response to this on his blog](http://peterturchin.com/cliodynamica/pay-equality-and-team-performance-in-major-league-baseball/). My response is [at the end of this post](/blog/can-we-trust-peter-turchin#response_to_turchin).
 
 This is a short-ish critique of his book [Ultrasociety](http://peterturchin.com/ultrasociety/). I'll only cover its one paragraph, which, I hope to show you, is absolutely enough. The paragraph was taken from the 4th chapter titled "Cooperate to Compete". Here's what Turchin writes:
 
