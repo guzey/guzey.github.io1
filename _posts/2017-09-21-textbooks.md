@@ -17,7 +17,7 @@ Thus, a list of my favorite textbooks/educational materials; all of them are eit
 
 ### Calculus
 
-*Calculus* by Michael Spivak. Note: you absolutely need somebody to guide you/help with the problems from the book.
+*Calculus* by Michael Spivak. Note: you absolutely need somebody to guide you/help with the problems from the book. The Correct™ way to self-study books like this is to email a professor at a local college and ask them if they could help you with stuff you don't understand and problems (hint: they will be happy to help).
 
 ### Multivariable calculus
 
