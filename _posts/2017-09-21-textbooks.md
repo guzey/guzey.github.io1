@@ -3,7 +3,7 @@ layout: post
 title: My Favorite Textbooks
 ---
 
-I find most textbooks to be bad, bordering on unreadable. Worse still, when I google "best X textbook", I frequently land on a "classic" textbook that feels like it was written by a fucking reptiloid for people with an entirely different from mine intelligence architecture. I hate formalism. I hate long mechanical derivations. I love thinking in pictures. I love intuitive, explainlikeim5 explanations. I believe that examples should precede definitions, not follow them.
+I find most textbooks to be basically unreadable. Worse still, when I google "best X textbook", I frequently land on a "classic" textbook that feels like it was written by a fucking reptiloid for people with an entirely different from mine intelligence architecture. I hate formalism. I hate long mechanical derivations. I love thinking in pictures. I love intuitive, explainlikeim5 explanations. I believe that examples should precede definitions, not follow them. Finally, I have big troubles with working memory, which might explain most of the preceding stuff.
 
 Thus, a list of my favorite textbooks/educational materials; all of them are either free or available on libgen.
 
@@ -28,6 +28,9 @@ Thus, a list of my favorite textbooks/educational materials; all of them are eit
 ### Topology
 
 *[Topology Without Tears](http://www.topologywithouttears.net/)* by Sidney A. Morris.
+
+### Algorithms
+[Algorithms](https://www.coursera.org/specializations/algorithms) by Tim Roughgarden. Note: this is a MOOC, not a textbook. But too good not to be included
 
 ### Computation Theory
 
