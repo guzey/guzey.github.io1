@@ -6,6 +6,7 @@
 </head>
 <script src="pixi.min.js"></script>
 <body>
+<div id="balls_go_here"></div>
 <script>
 
     //Aliases
@@ -24,7 +25,7 @@
         w = 512
     var stage = new Container(),
         renderer = autoDetectRenderer(w, h, {transparent: true})
-    document.body.appendChild(renderer.view)
+    document.getElementById("balls_go_here").appendChild(renderer.view)
     setup()
 
     var circle, score, message2,
@@ -67,13 +68,6 @@
         message.x = 0
         message.y = 0
         gameScene.addChild(message)
-        message2 = new Text(
-            "press space to create balls, click on them to gain points!",
-            {font: "32px Futura", fill: "blue"}
-        )
-        message2.x = 0
-        message2.y = 72
-        gameScene.addChild(message2)
 
         // Spawn balls by pressing space
         var space = keyboard(32)
@@ -103,6 +97,8 @@
         ball.angle = randomInt(0, 360) / 57.29578
         ball.vx = Math.cos(ball.angle) * ballv
         ball.vy = Math.sin(ball.angle) * ballv
+        // indicates whether the ball was clicked or is out of bounds
+        ball.done = false
 
         ball.interactive = true
         ball.buttonMode = true
@@ -117,16 +113,19 @@
     }
 
     function onClick() {
+
+        this.done = true
+        this.visible = false
+
+        // add points, depending on where the ball was clicked
         var mouseData = renderer.plugins.interaction.mouse.global
-        if (Math.pow(mouseData.y-h/2, 2) + Math.pow(mouseData.x-h/2, 2) < Math.pow((h / 2 / 3) - ballRadius, 2)) {
+        if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 2 / 3) - ballRadius, 2)) {
             score += 10
-        } else if (Math.pow(mouseData.y-h/2, 2) + Math.pow(mouseData.x-h/2, 2) < Math.pow((h / 3) - ballRadius, 2)) {
+        } else if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 3) - ballRadius, 2)) {
             score += 20
         } else {
             score += 30
         }
-        message.text = "Current Score is " + score
-        message2.text = null
 
     }
 
@@ -144,14 +143,17 @@
 
     function play() {
         balls.forEach(function (ball) {
-            ball.x += ball.vx
-            ball.y += ball.vy
-            if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2) + ballRadius, 2)) {
-                ball.visible = false
-//                ball.vy = -ball.vy
-//                ball.vx = -ball.vx
+            if (ball.done == false) {
+                ball.x += ball.vx
+                ball.y += ball.vy
+                if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2) + ballRadius, 2)) {
+                    ball.done = true
+                    ball.visible = false
+                    score -= 100
+                }
             }
         })
+        message.text = "Current Score is " + score
     }
 
     //The `randomInt` helper function (not including max)
