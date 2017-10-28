@@ -23,12 +23,12 @@
     var h = 512,
         w = 512
     var stage = new Container(),
-        renderer = autoDetectRenderer(w, h, { transparent: true })
+        renderer = autoDetectRenderer(w, h, {transparent: true})
     document.body.appendChild(renderer.view)
     setup()
 
-    var circle, t, message,
-        ballv = 1,
+    var circle, score, message2,
+        ballv = 2,
         ballRadius = 16
 
     function setup() {
@@ -41,30 +41,45 @@
         circle = new Graphics()
         circle.lineStyle(2, 0xFF00FF, 1)
         circle.beginFill(0x9966FF, 0.3)
-        circle.drawCircle(w/2, h/2, h/2)
+        circle.drawCircle(w / 2, h / 2, h / 2)
         circle.endFill()
         gameScene.addChild(circle)
 
         circle = new Graphics()
         circle.lineStyle(2, 0xFF00FF, 1)
         circle.beginFill(0x9966FF, 0.3)
-        circle.drawCircle(w/2, h/2, h/2*(2/3))
+        circle.drawCircle(w / 2, h / 2, h / 2 * (2 / 3))
         circle.endFill()
         gameScene.addChild(circle)
 
         circle = new Graphics()
         circle.lineStyle(2, 0xFF00FF, 1)
         circle.beginFill(0x9966FF, 0.3)
-        circle.drawCircle(w/2, h/2, h/2*(1/3))
+        circle.drawCircle(w / 2, h / 2, h / 2 * (1 / 3))
         circle.endFill()
         gameScene.addChild(circle)
 
+        score = 0
+        message = new Text(
+            "Current Score is " + 0,
+            {font: "64px Futura", fill: "blue"}
+        )
+        message.x = 0
+        message.y = 0
+        gameScene.addChild(message)
+        message2 = new Text(
+            "press space to create balls, click on them to gain points!",
+            {font: "32px Futura", fill: "blue"}
+        )
+        message2.x = 0
+        message2.y = 72
+        gameScene.addChild(message2)
 
         // Spawn balls by pressing space
-//        var space = keyboard(32)
-//        space.press = function() {
-//            createBall()
-//        }
+        var space = keyboard(32)
+        space.press = function () {
+            createBall()
+        }
 
         balls = []
 
@@ -81,17 +96,17 @@
         var ball = new Graphics()
         ball.lineStyle(2, 0xFF00FF, 1)
         ball.beginFill(0x9966FF, 0.3)
-        ball.drawCircle(w/2, h/2, ballRadius)
+        ball.drawCircle(w / 2, h / 2, ballRadius)
         ball.endFill()
 
         // ball's direction angle in radians
-        ball.angle = randomInt(0,360) / 57.29578
+        ball.angle = randomInt(0, 360) / 57.29578
         ball.vx = Math.cos(ball.angle) * ballv
         ball.vy = Math.sin(ball.angle) * ballv
 
         ball.interactive = true
         ball.buttonMode = true
-        ball.on('pointerdown', onClick)
+        ball.on('mousedown', onClick)
 
         // add the ball to the balls array
         balls.push(ball)
@@ -99,23 +114,23 @@
         // add the ball to the gameScene
         gameScene.addChild(ball)
 
-        message = new Text(
-            "The End!",
-            {font: "64px Futura", fill: "white"}
-        )
-        message.x = 100
-        message.y = 100
-        message.interactive = true
-        message.buttonMode = true
-        message.on('pointerdown', onClick)
-        gameScene.addChild(message)
     }
 
-    function onClick () {
-        message.text = "derp"
+    function onClick() {
+        var mouseData = renderer.plugins.interaction.mouse.global
+        if (Math.pow(mouseData.y-h/2, 2) + Math.pow(mouseData.x-h/2, 2) < Math.pow((h / 2 / 3) - ballRadius, 2)) {
+            score += 10
+        } else if (Math.pow(mouseData.y-h/2, 2) + Math.pow(mouseData.x-h/2, 2) < Math.pow((h / 3) - ballRadius, 2)) {
+            score += 20
+        } else {
+            score += 30
+        }
+        message.text = "Current Score is " + score
+        message2.text = null
+
     }
 
-    function gameLoop(){
+    function gameLoop() {
 
         //Loop this function 60 times per second
         requestAnimationFrame(gameLoop)
@@ -131,57 +146,54 @@
         balls.forEach(function (ball) {
             ball.x += ball.vx
             ball.y += ball.vy
-            if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h/2)-ballRadius, 2)) {
-                ball.vy = -ball.vy
-                ball.vx = -ball.vx
+            if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2) + ballRadius, 2)) {
+                ball.visible = false
+//                ball.vy = -ball.vy
+//                ball.vx = -ball.vx
             }
         })
-        if (t < 60) {
-            t += 1
-        } else {
-            t = 0
-            createBall()
-        }
     }
+
     //The `randomInt` helper function (not including max)
     function randomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min
     }
+
     //The `keyboard` helper function
-//    function keyboard(keyCode) {
-//        var key = {};
-//        key.code = keyCode;
-//        key.isDown = false;
-//        key.isUp = true;
-//        key.press = undefined;
-//        key.release = undefined;
-//        //The `downHandler`
-//        key.downHandler = function(event) {
-//            if (event.keyCode === key.code) {
-//                if (key.isUp && key.press) key.press();
-//                key.isDown = true;
-//                key.isUp = false;
-//            }
-//            event.preventDefault();
-//        };
-//        //The `upHandler`
-//        key.upHandler = function(event) {
-//            if (event.keyCode === key.code) {
-//                if (key.isDown && key.release) key.release();
-//                key.isDown = false;
-//                key.isUp = true;
-//            }
-//            event.preventDefault();
-//        };
-//        //Attach event listeners
-//        window.addEventListener(
-//            "keydown", key.downHandler.bind(key), false
-//        );
-//        window.addEventListener(
-//            "keyup", key.upHandler.bind(key), false
-//        );
-//        return key;
-//    }
+    function keyboard(keyCode) {
+        var key = {}
+        key.code = keyCode
+        key.isDown = false
+        key.isUp = true
+        key.press = undefined
+        key.release = undefined
+        //The `downHandler`
+        key.downHandler = function (event) {
+            if (event.keyCode === key.code) {
+                if (key.isUp && key.press) key.press()
+                key.isDown = true
+                key.isUp = false
+            }
+            event.preventDefault()
+        }
+        //The `upHandler`
+        key.upHandler = function (event) {
+            if (event.keyCode === key.code) {
+                if (key.isDown && key.release) key.release()
+                key.isDown = false
+                key.isUp = true
+            }
+            event.preventDefault()
+        }
+        //Attach event listeners
+        window.addEventListener(
+            "keydown", key.downHandler.bind(key), false
+        )
+        window.addEventListener(
+            "keyup", key.upHandler.bind(key), false
+        )
+        return key
+    }
 
 </script>
 
