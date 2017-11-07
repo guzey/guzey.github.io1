@@ -7,7 +7,12 @@
 <script src="pixi.min.js"></script>
 <body>
 <div id="balls_go_here"></div>
-<script src="{% static "balls/pixi.min.js" %}"></script>
+
+<input type="hidden" name="score" value="0" id="hidden_score"/>
+<input type="hidden" name="clicks" id="hidden_clicks"/>
+
+<!--CAN COPYPASTE FROM BELOW-->
+
 <script>
 
 //Aliases
@@ -32,7 +37,7 @@ setup()
 var circle, score,
     clicks = [],
     // ball velocity
-    ballv = 1,
+    ballv = 1.5,
     ballRadius = 24,
     t = 0
 
@@ -122,34 +127,39 @@ function setup() {
 
 last_angle = 0
 function createBall() {
-
-    // draw the ball
-    var ball = new Graphics()
-    ball.lineStyle(2, 0xFF00FF, 1)
-    ball.beginFill(0x9966FF, 0.3)
-    ball.drawCircle(w / 2, h / 2, ballRadius)
-    ball.endFill()
-
     // ball's direction angle in radians; min angle between two successive balls is pi/2
-    do {
-        ball.angle = randomInt(0, 360) / 57.29578
+//    do {
+//        current_angle = randomInt(0, 360) / 57.29578
+//    }
+//    while (Math.abs(last_angle - current_angle) < Math.PI / 2 || Math.abs(last_angle - current_angle) > Math.PI * 3 / 2)
+    current_angle = last_angle + 2 * Math.PI / 9
+    last_angle = current_angle
+    for (i=0; i<3; i++) {
+        // draw the ball
+        var ball = new Graphics()
+        ball.lineStyle(2, 0xFF00FF, 1)
+        ball.beginFill(0x9966FF, 0.3)
+        ball.drawCircle(w / 2, h / 2, ballRadius)
+        ball.endFill()
+
+        ball.angle = current_angle + i * 2 * Math.PI / 3
+
+        ball.vx = Math.cos(ball.angle) * ballv
+        ball.vy = Math.sin(ball.angle) * ballv
+        // indicates whether the ball was clicked or is out of bounds
+        ball.done = false
+
+        ball.interactive = true
+        ball.buttonMode = true
+        ball.on('mousedown', onClick)
+
+        // add the ball to the balls array
+        balls.push(ball)
+
+        // add the ball to the gameScene
+        gameScene.addChild(ball)
     }
-    while (Math.abs(last_angle - ball.angle) < Math.PI / 2)
-    last_angle = ball.angle
-    ball.vx = Math.cos(ball.angle) * ballv
-    ball.vy = Math.sin(ball.angle) * ballv
-    // indicates whether the ball was clicked or is out of bounds
-    ball.done = false
 
-    ball.interactive = true
-    ball.buttonMode = true
-    ball.on('mousedown', onClick)
-
-    // add the ball to the balls array
-    balls.push(ball)
-
-    // add the ball to the gameScene
-    gameScene.addChild(ball)
 
 }
 
@@ -201,8 +211,8 @@ function play() {
     })
     t++
     score_text.text = "Current Score is " + score
-//    document.getElementById("hidden_score").value = score
-//    document.getElementById("hidden_clicks").value = clicks
+    document.getElementById("hidden_score").value = score
+    document.getElementById("hidden_clicks").value = clicks
 //        score_text.text = clicks
     if (Math.floor(t/60) === 5) {
 //            clicks = clicks.join()
@@ -255,7 +265,4 @@ function keyboard(keyCode) {
 }
 
 </script>
-
-
-</body>
 </html>
