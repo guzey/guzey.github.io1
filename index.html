@@ -34,19 +34,13 @@ title: Home
         position: absolute;
         z-index: 3;
         opacity: 0.8;
-        width: 218px;
-        height: 72px;
         border: none;
-        text-align: center;
-        font-size: 16px;
-        font-family: 'Cutive Mono', monospace;
         box-shadow: 0 0 0 0 rgba(128, 255, 128, 0.5);
         border-radius: 50%;
         background-color: rgba(128, 255, 128, 0.7);
     }
 </style>
 
-<!--<input id="qty" value="lel" />-->
 <button class="food" id="start_button"></button>
 
 <div class="container content">
@@ -150,7 +144,7 @@ title: Home
             "this is an indicator of how close to the fatal dose you are",
             "once it turns fully red you're done",
             "you're probably wondering what the hell is happening here anyways",
-            "and why you're dying at all",
+            "and why you're disappearing at all",
             "but we will all eventually disintegrate and disappear won't we",
             "for the luckier ones death will be fast and painless",
             "some will find it in under bizarre and perhaps unfortunate circumstances",
@@ -232,9 +226,6 @@ title: Home
         Composites.chain(snake, 0, 0, 0, 0, {stiffness: 1, length: 0})
         Composite.rotate(snake, Math.PI * 4 / 3, {x: w / 2 - w / 3, y: h / 2})
 
-        //    var star = Vertices.fromPath('50 0 63 38 100 38 69 59 82 100 50 75 18 100 31 59 0 38 37 38'),
-        //        concave = Bodies.fromVertices(200, 200, star, { collisionFilter: { group: -1 } })
-
         first_mass = snake.bodies[0].mass
         for (i = 0; i < snake.bodies.length; i++) {
             snake.bodies[i].mass = snake.bodies[0].mass * (500 * i + 1)
@@ -242,26 +233,6 @@ title: Home
         World.add(world, [
             snake
         ])
-
-        //    var extend_snake = function() {
-        //        var circle = Bodies.circle(
-        //            snake.bodies[snake.bodies.length-1].position.x + 5,
-        //            snake.bodies[snake.bodies.length-1].position.y,
-        //            10,
-        //            {collisionFilter: {group: -1}})
-        //
-        //        circle.mass = snake.bodies[snake.bodies.length-1].mass + snake.bodies[0].mass * 500
-        //        Composite.add(snake, circle)
-        //        var constraint = Constraint.create({
-        //            bodyA: snake.bodies[snake.bodies.length-2],
-        //            bodyB: snake.bodies[snake.bodies.length-1]
-        //        })
-        //
-        //        World.add(world, [
-        //            circle,
-        //            constraint
-        //        ])
-        //    }
 
         var force_constant = 0.0004
         var random_pull_constant = 50
@@ -332,7 +303,6 @@ title: Home
         var epinephrine_time = 0
         Events.on(engine, 'afterUpdate', function (event) {
             pull_force(engine)
-//        document.getElementById('qty').value = snake.bodies.length
             t++
             if (t % 2 === 0) {
                 if (endgame === 1) {
@@ -362,12 +332,6 @@ title: Home
             if (t - epinephrine_time > 300) {
                 epinephrine = 0
             }
-
-//            k++
-//            if (k < 8) {
-//                extend_snake()
-//            Composites.chain(snake, 0, 0, 0, 0, {stiffness: 1, length: 0})
-//            }
 
             // life progression
             if (endgame === 0) {
