@@ -3,7 +3,11 @@ layout: post
 title: Philosophers for Sale
 ---
 
-Zeus is short of money. He takes famous philosophers from the afterlife and puts them up for sale, as slaves:  
+This play was written by Lucian. I felt that all its existing English translations are boring as hell, so I translated the Russian version by Mikhail Gasparov, as presented in his book *Занимательная Греция* (not translated into English, unfortunately), which itself is quite a liberal translation of the original play.
+
+---
+
+Zeus is short of money. He takes famous philosophers from the afterlife and puts them up for sale as slaves:  
 "Great teachers of life are sold!", Hermes is shouting, "If you want a good life, come forward and choose one for youself!", the buyers approach the slaves and start to examine them.
 
 Pythagoras is on the platform.  
@@ -29,7 +33,7 @@ Pythagoras is on the platform.
 Diogenis is on the platform.  
 "Here's a manly life, here's a free life! Who will buy him?"  
 "Free? Will I not be taken to court for buying a free man?"  
-"Don't be afraid, he says that he is free even as a slave"  
+"Don't be afraid, he says that he is free even as a slave."  
 "Well, what crafts does he know?"  
 "Ask him!"  
 "I'm afraid he'll bite me!"  
@@ -46,7 +50,6 @@ Diogenis is on the platform.
 "Take him!"  
 
 "And here's two lifes at once, one wiser than the other! Who wants them?"  
-<!--excerpt-->
 "What is it with them? One is constanly laughing, the other one is constantly crying. Why are you laughing?"  
 "I'm laughing at you: you think you're buying a slave, while actually you're just buying atoms, void, and infinity."  
 "That you're full of void, I can see that alright. And why are you crying?"  
@@ -86,7 +89,7 @@ Diogenis is on the platform.
 "Yes."  
 "And are you a man?"  
 "Yes."  
-"Then is you are a stone."  
+"Then you are a stone."  
 "I'm getting cold! Please turn me back into a man!"  
 "Easy. Is a stone animate?"  
 "No."  
@@ -124,8 +127,4 @@ Diogenis is on the platform.
 "Hermes, money, and everybody who is present here."  
 "Is there anybody here?"  
 "Once I send you to roll millstones, you'll instantly feel who's a slave here and who's not!"  
-"Enough arguing!", Hermes interrupts them, "You walk with your owner, and those who haven't bought anything, come here tomorrow. Today we were selling philosophers, while tomorrow we'll be selling artisans, peasants, and tradesmen. Maybe they'll make better teachers of life?"  
-
----
-
-This play was written by Lucian. I felt that all its existing English translations are rather boring, so I translated the Russian version by Mikhail Gasparov, as presented in his book Занимательная Греция (not translated into English, unfortunately), which itself is quite a liberal translation of the original play.
+"Enough arguing!", Hermes interrupts them, "You walk with your owner, and those who haven't bought anything, come here tomorrow. Today we were selling philosophers, while tomorrow we'll be selling artisans, peasants, and tradesmen. Maybe they'll make better teachers of life?"
