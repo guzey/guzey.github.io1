@@ -336,13 +336,24 @@ title: Home
             // life progression
             if (endgame === 0) {
                 if (start_button_timer > 600 || start_button_timer === 0) {
-                    if (t % 30 === 0 && epinephrine === 0) {
-                        Composite.remove(snake, snake.bodies[snake.bodies.length - 1])
-                        Composite.remove(snake, snake.constraints[snake.constraints.length - 1])
-                        if (snake.bodies.length === 3) {
-                            endgame_function()
+                    if (snake.bodies.length < 40 && current_life_stage > 5) {
+                        if (t % 60 === 0 && epinephrine === 0) {
+                            Composite.remove(snake, snake.bodies[snake.bodies.length - 1])
+                            Composite.remove(snake, snake.constraints[snake.constraints.length - 1])
+                            if (snake.bodies.length === 2) {
+                                endgame_function()
+                            }
+                        }    
+                    } else {
+                        if (t % 30 === 0 && epinephrine === 0) {
+                            Composite.remove(snake, snake.bodies[snake.bodies.length - 1])
+                            Composite.remove(snake, snake.constraints[snake.constraints.length - 1])
+                            if (snake.bodies.length === 2) {
+                                endgame_function()
+                            }
                         }
                     }
+                    
                 }
 
                 if (snake_collides(start_button)
