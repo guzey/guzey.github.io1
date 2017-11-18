@@ -19,7 +19,7 @@
 <script>
 
     //Aliases
-    var Container = PIXI.Container,
+    let Container = PIXI.Container,
         autoDetectRenderer = PIXI.autoDetectRenderer,
         loader = PIXI.loader,
         resources = PIXI.loader.resources,
@@ -32,35 +32,39 @@
     //renderer.view to the DOM
     //var h = window.innerHeight - 20,
     //    w = window.innerHeight - 20
-    var h = 600,
-        w = 600,
-        score_div = document.getElementById("score")
-//    debug1 = document.getElementById("debug1")
-//    debug2 = document.getElementById("debug2")
 
-    var stage = new Container(),
+    // width and height of the square
+    let h = 600,
+        w = 600,
+        r = h / 2,
+        score_div = document.getElementById("score")
+    //    debug1 = document.getElementById("debug1")
+    //    debug2 = document.getElementById("debug2")
+
+    let stage = new Container(),
         renderer = autoDetectRenderer(w, h, {transparent: true})
     document.getElementById("balls_go_here").appendChild(renderer.view)
 
-    var rewards = [[10, 30, 50, -100], [20, 60, 100, -200], [30, 90, 150, -300]],
+    let rewards = [[10, 30, 50, -100], [20, 60, 100, -200], [30, 90, 150, -300]],
         num_rounds = rewards.length
 
-    var center_reward = rewards[0][0],
+    let center_reward = rewards[0][0],
         middle_reward = rewards[0][1],
         outer_reward = rewards[0][2],
         punishment = rewards[0][3]
-    setup()
 
-    var circle,
-        score = 0,
-        clicks = [],
-        // ball velocity
-        ballv = 1,
-        ballRadius = 24,
-        // time in frames
-        t = 0,
-        // time in seconds
-        ts = 0
+    // time counter
+    let t = 0
+
+    let
+        // game canvas
+        gameScene,
+        // game field is made up of circles
+        circle,
+        // rectangle will cover the board between rounds
+        rectangle
+
+    setup()
 
     function setup() {
 
@@ -90,8 +94,9 @@
         circle.endFill()
         gameScene.addChild(circle)
 
-        score_div.style.marginLeft = w + "px"
-        score_div.style.marginTop = -h + "px"
+        score_div.style.marginLeft = w / 3 + "px"
+        score_div.style.marginTop = -h * 2 / 3 + "px"
+        score_div.style.visibility = "hidden"
 
         central_reward_text = new Text(
             "+" + center_reward,
@@ -126,7 +131,7 @@
         gameScene.addChild(punishment_text)
 
         // Spawn balls by pressing space
-        var space = keyboard(32)
+        let space = keyboard(32)
         space.press = function () {
 //        createBalls()
 //            if (play === 0 && current_round < num_rounds) {
@@ -136,13 +141,48 @@
 //            }
         }
 
-        balls = []
-
         //Set the game state
         state = play_loop
 
         //Start the game loop
         appLoop()
+    }
+
+    function startLevel() {
+
+        current_round += 1
+        launched = 0
+
+        center_reward = rewards[current_round][0]
+        middle_reward = rewards[current_round][1]
+        outer_reward = rewards[current_round][2]
+        punishment = rewards[current_round][3]
+
+        central_reward_text.text = "+" + rewards[current_round][0]
+        middle_reward_text.text = "+" + rewards[current_round][1]
+        outer_reward_text.text = "+" + rewards[current_round][2]
+        punishment_text.text = rewards[current_round][3]
+
+        // shades out the game field between rounds
+        rectangle = new Graphics()
+        rectangle.lineStyle(2, 0x0000FF, 0)
+        rectangle.beginFill(0xA3A3A3, 1)
+        rectangle.drawRect(0, 0, h, w)
+        rectangle.endFill()
+        gameScene.addChild(rectangle)
+
+        next_round_text = new Text("Очки в следующем раунде:\n"
+            + center_reward + " очков во внутреннем кольце\n"
+            + middle_reward + " очков в среднем кольце\n"
+            + outer_reward + " очков во внешнем кольце\n"
+            + punishment + " за пропуск шара",
+            {font: "64px Futura", fill: "blue"}
+        )
+        next_round_text.x = 100
+        next_round_text.y = 100
+        gameScene.addChild(next_round_text)
+
+        t = 0
     }
 
     last_angle = 0
@@ -153,11 +193,13 @@
 //        current_angle = randomInt(0, 360) / 57.29578
 //    }
 //    while (Math.abs(last_angle - current_angle) < Math.PI / 2 || Math.abs(last_angle - current_angle) > Math.PI * 3 / 2)
+        // angles are needed to launch balls in different directions
         current_angle = last_angle + 2 * Math.PI / 9
         last_angle = current_angle
         for (i = 0; i < 3; i++) {
+            current_balls += 1
             // draw the ball
-            var ball = new Graphics()
+            let ball = new Graphics()
             ball.lineStyle(2, 0xA1A1A1, 1)
             ball.beginFill(0xA3A3A3, 0.3)
             ball.drawCircle(w / 2, h / 2, ballRadius)
@@ -184,18 +226,21 @@
 
     }
 
+    // when one clicks on a ball
     function onClick() {
+
+        current_balls -= 1
 
         this.done = true
         this.visible = false
         time = Date.now()
 //        clicks = [1,3]
         // add points, depending on where the ball was clicked
-        var mouseData = renderer.plugins.interaction.mouse.global
-        if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 2 / 3) - ballRadius, 2)) {
+        let mouseData = renderer.plugins.interaction.mouse.global
+        if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 2 / 3), 2)) {
             score += center_reward
             clicks.push(1)
-        } else if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 3) - ballRadius, 2)) {
+        } else if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 3), 2)) {
             score += middle_reward
             clicks.push(2)
         } else {
@@ -205,6 +250,7 @@
 
     }
 
+    // doesn't do anything specific--simply runs the game
     function appLoop() {
 
         //Loop this function 60 times per second
@@ -217,26 +263,58 @@
         renderer.render(stage)
     }
 
-    var play = 1,
-        current_round = 0,
-        round_duration = 20,
-        pause_between_rounds = 10,
-        new_balls_interval = 5
+
+    // various important game variable
+    var
+        // play is the state of the game: 1 when active; 0 when between rounds
+        play = 0,
+        current_round = -1,
+        // round duration in launches of packs of balls
+        round_duration = 5,
+        // number of launches in a round so far
+        launched = 0,
+        // number of balls on the board at the moment
+        current_balls = 0,
+        // ball velocity
+        ballv = 1,
+        t_to_exit = r / ballv,
+        new_balls_interval = t_to_exit,
+        pause_between_rounds = 600,
+        score = 0,
+        // records clicks for analysis
+        clicks = [],
+        ballRadius = 24,
+        balls = []
 
 
     function play_loop() {
+        if (current_round === -1) {
+            startLevel()
+        }
+        t++
         if (play === 1) {
-            if (ts % new_balls_interval === 0) {
-                createBalls()
-            }
+
             // create balls at intervals
+            if (launched < round_duration) {
+                if (t % new_balls_interval === 0) {
+                    createBalls()
+                    launched += 1
+                    t = 0
+                } else if (current_balls === 0 && t < new_balls_interval - 60) {
+                    t = new_balls_interval - 60
+                }
+            }
 
             // move balls
             balls.forEach(function (ball) {
                 if (ball.done === false) {
                     ball.x += ball.vx
                     ball.y += ball.vy
-                    if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2) + ballRadius, 2)) {
+                    ball.dc = Math.sqrt(Math.pow(ball.x, 2) + Math.pow(ball.y, 2))
+                    if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2), 2)) {
+
+                        current_balls -= 1
+
                         ball.done = true
                         ball.visible = false
                         score += punishment
@@ -244,48 +322,42 @@
                     }
                 }
             })
+
+            if (launched === round_duration && current_balls === 0) {
+//            balls.forEach(function (ball) {
+//                if (ball.done === false) {
+//                    ball.done = true
+//                    ball.visible = false
+//                }
+//            })
+                play = 0
+                if (current_round < num_rounds) {
+                    startLevel()
+                }
+            }
+
             score_div.innerText = "Current score: " + score
             document.getElementById("hidden_score").value = score
             document.getElementById("hidden_clicks").value = clicks
 
 
-        } else if (ts % pause_between_rounds === 0 && current_round < num_rounds) {
+            // start the next round when pause runs out
+        } else if (t % pause_between_rounds === 0 && current_round < num_rounds) {
             play = 1
             t = 0
-            ts = t / 60
+
+            gameScene.removeChild(next_round_text)
+            gameScene.removeChild(rectangle)
 
         }
-//        debug1.innerText = current_round
-//        debug2.innerText = ts
-        t++
-        ts = t / 60
+//        debug1.innerText = t
 
-        if (ts % round_duration === 0) {
-            balls.forEach(function (ball) {
-                if (ball.done === false) {
-                    ball.done = true
-                    ball.visible = false
-                }
-            })
-            play = 0
-            if (current_round < num_rounds) {
-                current_round += 1
-                center_reward = rewards[current_round][0]
-                middle_reward = rewards[current_round][1]
-                outer_reward = rewards[current_round][2]
-                punishment = rewards[current_round][3]
+//        debug2.innerText = t
 
-                central_reward_text.text = "+" + rewards[current_round][0]
-                middle_reward_text.text = "+" + rewards[current_round][1]
-                outer_reward_text.text = "+" + rewards[current_round][2]
-                punishment_text.text = rewards[current_round][3]
 
-                t = 0
-                ts = t / 60
-            }
-        }
         if (current_round === num_rounds) {
-            score_div.innerText = "You scored " + score
+            score_div.innerText = "Вы набрали " + score + "очков"
+            score_div.style.visibility = "visible"
         }
     }
 
@@ -331,4 +403,5 @@
     }
 
 </script>
-</html>
+</body>
+</html> 
