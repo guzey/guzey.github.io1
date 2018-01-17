@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tinder is Effectively Deanonymized in Russia
+title: Tinder Is Effectively Deanonymized in Russia
 ---
 
 Abstract: About 2/3s of tinder accounts in Moscow, Russia can be directly linked to a VK account with very little effort, and based on tinder pictures alone.
