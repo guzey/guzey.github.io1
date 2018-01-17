@@ -165,6 +165,7 @@ title: Home
 
         var w = window.innerWidth - 24
         var h = window.innerHeight
+        var scroll = 0
 
         // create renderer
         var render = Render.create({
@@ -255,8 +256,8 @@ title: Home
         var snake_collides = function (body) {
             return (snake.bodies[0].position.x > start_button_coords.left &&
                 snake.bodies[0].position.x < start_button_coords.right &&
-                snake.bodies[0].position.y > start_button_coords.top &&
-                snake.bodies[0].position.y < start_button_coords.bottom
+                snake.bodies[0].position.y > start_button_coords.top + scroll &&
+                snake.bodies[0].position.y < start_button_coords.bottom + scroll
             )
         }
 
@@ -409,23 +410,22 @@ title: Home
             min: {x: 0, y: 0},
             max: {x: w, y: h}
         })
-
-        // http://davidwells.io/snippets/disable-scrolling-with-javascript/
-        function noscroll() {
-            window.scrollTo(0, 0)
-        }
-        window.addEventListener('scroll', noscroll)
+        
+        // adjusts collision detection for scrolled window
+        window.onscroll = function (e) {
+            scroll = window.scrollY
+        };
 
         // http://www.chrisbuttery.com/articles/fade-in-fade-out-with-javascript/
         function fadeIn(el, display){
-            el.style.opacity = 0.15;
-            el.style.display = display || "block";
+            el.style.opacity = 0.15
+            el.style.display = display || "block"
 
             (function fade() {
-                var val = parseFloat(el.style.opacity);
+                var val = parseFloat(el.style.opacity)
                 if (!((val += .003) > 1)) {
-                    el.style.opacity = val;
-                    requestAnimationFrame(fade);
+                    el.style.opacity = val
+                    requestAnimationFrame(fade)
                 }
             })();
         }
