@@ -57,16 +57,6 @@ How is this result possible? The main reason is that VK's default privacy settin
 
 So one way to index VK's users would be to simply check id1, id2, id3, id4, ..., change ip address every once in a while when VK starts blocking you, and continue on.
 
-To verify if this method actually works, I logged out of VK and went over 100 ids, starting with mine ([https://vk.com/id253536134](https://vk.com/id253536134)), by hand. The resulting statistics are:
-
-80 -- Info available. Of them 44 accounts have at least 1 picture of an actual person.  
-8 -- "Only logged in users can see this profile."  
-7 -- "This profile has been deleted or has not been created yet."  
-4 -- "We have detected suspicious activity on X's profile and temporarily suspended it to prevent further damage."  
-1 -- "Unfortunately, we had to block X's page due to ToS violation."
-
-So, of these 100, at most 52 are an identity of a real person. In reality, some of those are abandoned, but we'll use this number to arrive at the most conservative estimate. If 44/52 (~85%) accounts could be indexed by Findface, then the actual success rate is closer to 67/85 (~79%). If we continue to improve the estimate, we'll probably get even closer to 100%.
-
 ## Conclusion
 
 I interpret the original number 63/100 as basically "if you have good quality pictures on tinder and your VK privacy settings are set to default ones, you will be found", from which I conclude that tinder is effectively deanonymized in Russia.
