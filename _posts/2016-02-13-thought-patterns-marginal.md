@@ -19,7 +19,7 @@ title: Thought Patterns&#58; Marginal
 
 Why is this post called "marginal" and why should this work at all? Because the problem with the type of actions I described here is not that they're intrinsically hard, but the inertia. Frequent reminders of them by Anki should make it go away and substitute the old thought pattern with the new one without significant exertion of will.
 
-Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete, I will just do it instead of postponing it", which lasts much longer and, hopefully, causes some cognitive dissonance.
+Why use Anki instead of just daily reminders or something? Because there's a qualitative difference between recognition and recall. Seeing a reminder that tells you to do something brings it to your awareness for a moment and that's it. Seeing a "less than 3 minutes" card in Anki, makes you recall what you actually want to do and explicitly form the thought "If a task should take less than 3 minutes to complete  I will just do it instead of postponing it" (and, if possible, visualize the next instance of this event), which lasts much longer and, hopefully, causes some cognitive dissonance.
 
 ### Dec 2016 update: Wait, but does it *actually* work?
 
