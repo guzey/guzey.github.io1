@@ -1,0 +1,697 @@
+---
+layout: default
+title: Balls risk measurement task summary and demo.
+---
+<script src="pixi.min.js"></script>
+    <h1>Balls risk measurement task demo.</h1>
+    <p><i>Source code is <a href="https://github.com/guzey/guzey.github.io/blob/master/balls/index.html">here</a>.</i></p>
+<div id="balls_go_here" style="text-align: center; margin-bottom: 400px;"></div>
+<div id="score" style="font-size: 36px;"></div>
+
+<input type="hidden" name="current_round" value="0" id="hidden_current_round"/>
+<input type="hidden" name="current_batch" value="0" id="hidden_current_batch"/>
+<input type="hidden" name="probability_out" value="0" id="hidden_probability_out"/>
+<input type="hidden" name="sigmoid_probability_out" value="0" id="hidden_sigmoid_probability_out"/>
+<!--records game score-->
+<input type="hidden" name="score" value="0" id="hidden_score"/>
+<!--records -->
+<input type="hidden" name="ball_out" value="0" id="hidden_ball_out"/>
+<input type="hidden" name="num_clicks" value="0" id="hidden_num_clicks"/>
+<input type="hidden" name="distances" value="0" id="hidden_distances"/>
+
+<!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+<div class="slidecontainer" id="slidecontainer" style="position: absolute; margin-top: -260px; margin-left: 140px; z-index: -1;">
+  <input type="range" min="0" max="100" value="0" style="width: 400px;" id="slider">
+  <p style="font-size: 16px;">Number of fake balls: <span id="slider_output"></span></p>
+  <p style="font-size: 16px;">Score multiplicator: <span id="slider_output_multiplicator"></span></p>
+    </div>
+<script>
+
+    let slidecontainer = document.getElementById("slidecontainer")
+    slidecontainer.style.visibility = "hidden"
+
+        // width and height of the square
+    let h = 600,
+        w = 600,
+        radius = h / 2,
+        score_div = document.getElementById("score"),
+//        debug1 = document.getElementById("debug1"),
+//        debug2 = document.getElementById("debug2"),
+        hidden_current_round = document.getElementById("hidden_current_round"),
+        hidden_current_batch = document.getElementById("hidden_current_batch"),
+        hidden_probability_out = document.getElementById("hidden_probability_out"),
+        hidden_sigmoid_probability_out = document.getElementById("hidden_sigmoid_probability_out"),
+        hidden_score = document.getElementById("hidden_score"),
+        hidden_ball_out = document.getElementById("hidden_ball_out"),
+        hidden_num_clicks = document.getElementById("hidden_num_clicks"),
+        hidden_distances = document.getElementById("hidden_distances")
+
+    //Aliases
+    let Container = PIXI.Container,
+        autoDetectRenderer = PIXI.autoDetectRenderer,
+        loader = PIXI.loader,
+        resources = PIXI.loader.resources,
+        TextureCache = PIXI.utils.TextureCache,
+        Texture = PIXI.Texture,
+        Sprite = PIXI.Sprite,
+        Text = PIXI.Text,
+        Graphics = PIXI.Graphics
+    //Create a Pixi stage and renderer and add the
+    //renderer.view to the DOM
+    //var h = window.innerHeight - 20,
+    //    w = window.innerHeight - 20
+
+    let stage = new Container(),
+        renderer = autoDetectRenderer(w, h, {transparent: true})
+    document.getElementById("balls_go_here").appendChild(renderer.view)
+
+// basic
+    let rewards = [[10, 30, 50, -100], [20, 60, 100, -200], [30, 90, 150, -300], [40, 120, 200, -400]],
+//        grisha's
+//    let rewards = [[10, 20, 30, -30], [10, 50, 100, -100], [50, 100, 150, -150], [10, 50, 150, -150],
+//                   [50, 100, 100, -100], [10, 20, 30, -200], [10, 50, 100, -200]],
+//    shortened
+//    let rewards = [[10, 20, 30, -30], [20, 40, 60, -60]],
+        num_rounds = rewards.length
+
+    let center_reward = rewards[0][0],
+        middle_reward = rewards[0][1],
+        outer_reward = rewards[0][2],
+        punishment = rewards[0][3]
+
+    // time counter
+    let t = 0
+
+    let
+        // game canvas
+        gameScene,
+        // game field is made up of circles
+        circle,
+        // cover will cover the board between rounds
+        cover
+
+    setup()
+
+    function setup() {
+
+        gameScene = new Container()
+        stage.addChild(gameScene)
+        stage.interactive = true
+        stage.buttonMode = true
+        stage.on('mousedown', onSceneClick)
+
+        // ADD  C I R C L E S
+
+        circle = new Graphics()
+        circle.lineStyle(2, 0xA1A1A1, 1)
+        circle.beginFill(0xA3A3A3, 0.3)
+        circle.drawCircle(w / 2, h / 2, h / 2)
+        circle.endFill()
+        gameScene.addChild(circle)
+
+        circle = new Graphics()
+        circle.lineStyle(2, 0xA1A1A1, 1)
+        circle.beginFill(0xA3A3A3, 0.3)
+        circle.drawCircle(w / 2, h / 2, h / 2 * (2 / 3))
+        circle.endFill()
+        gameScene.addChild(circle)
+
+        circle = new Graphics()
+        circle.lineStyle(2, 0xA1A1A1, 1)
+        circle.beginFill(0xA3A3A3, 0.3)
+        circle.drawCircle(w / 2, h / 2, h / 2 * (1 / 3))
+        circle.endFill()
+        gameScene.addChild(circle)
+
+        score_div.style.marginLeft = w / 3 + "px"
+        score_div.style.marginTop = -h * 2 / 3 + "px"
+        score_div.style.visibility = "hidden"
+
+        central_reward_text = new Text(
+            "+" + center_reward,
+            {font: "64px Futura", fill: "blue"}
+        )
+        central_reward_text.x = w / 2 - central_reward_text.width / 2
+        central_reward_text.y = h / 2 - central_reward_text.height / 2
+        gameScene.addChild(central_reward_text)
+
+        middle_reward_text = new Text(
+            "+" + middle_reward,
+            {font: "64px Futura", fill: "blue"}
+        )
+        middle_reward_text.x = w / 3 - middle_reward_text.width / 2
+        middle_reward_text.y = h / 3 - middle_reward_text.height / 2
+        gameScene.addChild(middle_reward_text)
+
+        outer_reward_text = new Text(
+            "+" + outer_reward,
+            {font: "64px Futura", fill: "blue"}
+        )
+        outer_reward_text.x = w / 5 - outer_reward_text.width / 2
+        outer_reward_text.y = h / 5 - outer_reward_text.height / 2
+        gameScene.addChild(outer_reward_text)
+
+//        punishment_text = new Text(
+//            punishment,
+//            {font: "64px Futura", fill: "blue"}
+//        )
+//        punishment_text.x = 40
+//        punishment_text.y = 40
+//        gameScene.addChild(punishment_text)
+
+        // Spawn balls by pressing space
+        let space = keyboard(32)
+        space.press = function () {
+        }
+
+        //Set the game state
+        state = play_loop
+
+        //Start the game loop
+        appLoop()
+    }
+
+    function startLevel() {
+
+        current_round += 1
+        current_batch = 0
+//        rewards = base_rewards FIX THIS!!!!!!!!!!!!!!!!
+        rewards = [[10, 30, 50, -100], [20, 60, 100, -200], [30, 90, 150, -300], [40, 120, 200, -400]]
+
+        // shades out the game field between rounds
+        cover = new Graphics()
+        cover.lineStyle(2, 0x0000FF, 0)
+        cover.beginFill(0xA3A3A3, 1)
+        cover.drawRect(0, 0, h, w)
+        cover.endFill()
+        gameScene.addChild(cover)
+
+        next_round_text = new Text("",
+            {font: "64px Futura", fill: "blue"}
+        )
+        if (current_round === 0) {
+            next_round_text.text = "Rules:\n"
+                + "You only earn points if you click\n"
+                + "all balls in the same zone.\n\n"
+                + "Base reward in the next round:\n"
+            + center_reward + " points per ball in the inner circle\n"
+            + middle_reward + " points per ball in the middle circle\n"
+            + outer_reward + " points per ball in the outer circle\n"
+        } else {
+            next_round_text.text = "In the last round you earned " + roundToTwo(last_round_score) + " points"
+            + "\n\nBase reward in the next round:\n"
+            + center_reward + " points per ball in the inner circle\n"
+            + middle_reward + " points per ball in the middle circle\n"
+            + outer_reward + " points per ball in the outer circle\n"
+        }
+
+        next_button_rectangle = new Graphics()
+        next_button_rectangle.lineStyle(2, 0x0000FF, 0)
+        next_button_rectangle.beginFill(0xCCCCCC, 1)
+        next_button_rectangle.drawRect(85, 475, 375, 75)
+        next_button_rectangle.endFill()
+        next_button_rectangle.interactive = true
+        next_button_rectangle.buttonMode = true
+        next_button_rectangle.on('mousedown', nextButtonOnClick)
+        gameScene.addChild(next_button_rectangle)
+
+        if (current_round !== num_rounds) {
+            next_button_text = new Text("Next", {font: "64px Futura", fill: "blue"}
+        )
+
+        score += last_round_score
+
+        next_round_text.x = 50
+        next_round_text.y = 100
+        gameScene.addChild(next_round_text)
+
+//        next_button_text.interactive = true
+//        next_button_text.buttonMode = true
+//        next_button_text.on('mousedown', nextButtonOnClick)
+        next_button_text.x = 100
+        next_button_text.y = 500
+        gameScene.addChild(next_button_text)
+        }
+
+        t = 0
+    }
+
+    last_angle = 0
+
+    function createBalls() {
+        // ball's direction angle in radians; min angle between two successive balls is pi/2
+//    do {
+//        current_angle = randomInt(0, 360) / 57.29578
+//    }
+//    while (Math.abs(last_angle - current_angle) < Math.PI / 2 || Math.abs(last_angle - current_angle) > Math.PI * 3 / 2)
+        // angles are needed to launch balls in different directions
+        current_angle = last_angle + 2 * Math.PI / 9
+        last_angle = current_angle
+        for (i = 0; i < 3; i++) {
+            current_balls += 1
+            for_hidden_current_round.push(current_round)
+            for_hidden_current_batch.push(current_batch)
+            // draw the ball
+            let ball = new Graphics()
+            ball.lineStyle(13, 0xAAAAAA, 1)
+            ball.beginFill(0x444444, 1)
+            ball.drawCircle(w / 2, h / 2, ballRadius-7)
+            ball.endFill()
+
+            ball.angle = current_angle + i * 2 * Math.PI / 3
+
+            ball.vx = Math.cos(ball.angle) * ballv
+            ball.vy = Math.sin(ball.angle) * ballv
+            // indicates whether the ball was clicked or is out of bounds
+            ball.done = false
+
+            ball.interactive = true
+            ball.buttonMode = true
+            ball.on('mousedown', onClick)
+
+            // add the ball to the balls array
+            balls.push(ball)
+
+            // add the ball to the gameScene
+            gameScene.addChild(ball)
+        }
+
+
+    }
+
+        function createFakeBalls(n) {
+        // ball's direction angle in radians; min angle between two successive balls is pi/2
+//    do {
+//        current_angle = randomInt(0, 360) / 57.29578
+//    }
+//    while (Math.abs(last_angle - current_angle) < Math.PI / 2 || Math.abs(last_angle - current_angle) > Math.PI * 3 / 2)
+        // angles are needed to launch balls in different directions
+        current_angle = last_angle + 0.5 + 2 * Math.PI / 9
+        last_angle = current_angle
+        for (i = 0; i < n; i++) {
+//            current_fake_balls += 1
+//            for_hidden_current_round.push(current_round)
+//            for_hidden_current_batch.push(current_batch)
+            // draw the ball
+            let ball = new Graphics()
+            if (i % 2 === 0) {
+                ball.lineStyle(2, 0xAAAAAA, 1)
+                ball.beginFill(0xAAAAAA, 1)
+            } else {
+                ball.lineStyle(2, 0x444444, 1)
+                ball.beginFill(0x444444, 1)
+            }
+
+            ball.drawCircle(w / 2, h / 2, ballRadius)
+            ball.endFill()
+
+            ball.angle = current_angle + i * 2 * Math.PI / n
+
+            ball.vx = Math.cos(ball.angle) * ballv
+            ball.vy = Math.sin(ball.angle) * ballv
+            // indicates whether the ball was clicked or is out of bounds
+            ball.done = false
+
+//            ball.interactive = true
+//            ball.buttonMode = true
+//            ball.on('mousedown', onClick)
+
+            // add the ball to the balls array
+            fake_balls.push(ball)
+
+            // add the ball to the gameScene
+            gameScene.addChild(ball)
+        }
+
+
+    }
+
+
+    // when one clicks on a ball
+    function onClick() {
+
+        let mouseData = renderer.plugins.interaction.mouse.global
+
+        current_balls -= 1
+        for_hidden_ball_out.push(0)
+        for_hidden_distances.push(Math.sqrt(Math.pow(mouseData.x - radius, 2) + Math.pow(mouseData.y - radius, 2)) / radius)
+
+        this.done = true
+        this.visible = false
+        time = Date.now()
+        // add points, depending on where the ball was clicked
+        if (Math.pow(mouseData.y - radius, 2) + Math.pow(mouseData.x - radius, 2) < Math.pow((radius / 3), 2)) {
+//            score += center_reward
+            for_hidden_score.push(center_reward)
+        } else if (Math.pow(mouseData.y - radius, 2) + Math.pow(mouseData.x - radius, 2) < Math.pow((h / 3), 2)) {
+//            score += middle_reward
+            for_hidden_score.push(middle_reward)
+        } else {
+//            score += outer_reward
+            for_hidden_score.push(outer_reward)
+        }
+
+    }
+
+    function onSceneClick() {
+        if (play === 1) {
+            for_hidden_num_clicks[current_round * round_duration * 3 + (current_batch - 1) * 3] += 1
+        }
+    }
+
+    function nextButtonOnClick() {
+        gameScene.removeChild(next_round_text)
+        gameScene.removeChild(next_button_text)
+        gameScene.removeChild(next_button_rectangle)
+
+        cognitive_load_text = new Text("Please select the cognitive load level\n\n" +
+            "points calculated using the following formula:\n" +
+            "Points * (1 + 0.02 * number of fake balls)\n" +
+            "for example, with 10 fake balls\n" +
+            "the reward multiplicator is 1.2,\n" +
+            "and with 100 fake balls\n" +
+            "the reward multiplicator is 3.0", {font: "64px Futura", fill: "blue"}
+        )
+
+        cognitive_load_text.x = 50
+        cognitive_load_text.y = 100
+        gameScene.addChild(cognitive_load_text)
+        slidecontainer.style.visibility = "visible"
+        slidecontainer.style.zIndex = "1"
+        slider = document.getElementById("slider")
+        output = document.getElementById("slider_output")
+        output_multiplicator = document.getElementById("slider_output_multiplicator")
+        output.innerHTML = slider.value // Display the default slider value
+        output_multiplicator.innerHTML = roundToTwo(1 + slider.value * point_multiplicator)
+
+        //
+
+        start_round_button_rectangle = new Graphics()
+        start_round_button_rectangle.lineStyle(2, 0x0000FF, 0)
+        start_round_button_rectangle.beginFill(0xCCCCCC, 1)
+        start_round_button_rectangle.drawRect(85, 475, 375, 75)
+        start_round_button_rectangle.endFill()
+        start_round_button_rectangle.interactive = true
+        start_round_button_rectangle.buttonMode = true
+        start_round_button_rectangle.on('mousedown', startRoundButtonOnClick)
+        gameScene.addChild(start_round_button_rectangle)
+
+        start_round_button_text = new Text("Start the next round", {font: "64px Futura", fill: "blue"}
+        )
+
+        start_round_button_text.interactive = true
+        start_round_button_text.buttonMode = true
+        start_round_button_text.on('mousedown', startRoundButtonOnClick)
+        start_round_button_text.x = 100
+        start_round_button_text.y = 500
+        gameScene.addChild(start_round_button_text)
+
+    }
+
+    // slider stuff from https://www.w3schools.com/howto/howto_js_rangeslider.asp
+    // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+        output.innerHTML = this.value
+        output_multiplicator.innerHTML = roundToTwo(1 + this.value * point_multiplicator)
+    }
+
+    // https://stackoverflow.com/a/18358056
+    // doesn't work
+    function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+}
+
+
+    function startRoundButtonOnClick() {
+        gameScene.removeChild(cognitive_load_text)
+        gameScene.removeChild(start_round_button_rectangle)
+        gameScene.removeChild(start_round_button_text)
+        gameScene.removeChild(cover)
+        slidecontainer.style.visibility = "hidden"
+
+        final_multiplicator = roundToTwo(1 + slider.value * point_multiplicator)
+
+        createFakeBalls(slider.value)
+
+        for (round = 0; round < num_rounds; round++ ) {
+            for (zone = 0; zone < 3; zone++) {
+                rewards[round][zone] = rewards[round][zone] * final_multiplicator
+            }
+        }
+
+        center_reward = roundToTwo(rewards[current_round][0])
+        middle_reward = roundToTwo(rewards[current_round][1])
+        outer_reward = roundToTwo(rewards[current_round][2])
+//        punishment = rewards[current_round][3]
+
+        central_reward_text.text = "+" + center_reward
+        middle_reward_text.text = "+" + middle_reward
+        outer_reward_text.text = "+" + outer_reward
+//        punishment_text.text = rewards[current_round][3]
+
+        play = 1
+        t = 0
+
+
+    }
+
+    // doesn't do anything specific--simply runs the game
+    function appLoop() {
+
+        //Loop this function 60 times per second
+        requestAnimationFrame(appLoop)
+
+        //Update the current game state:
+        state()
+
+        //Render the stage
+        renderer.render(stage)
+    }
+
+
+    // various important game variable
+    var
+        // play is the state of the game: 1 when active; 0 when between rounds
+        play = 0,
+        current_round = -1,
+            // round duration in launches of packs of balls
+        round_duration = 3,
+        // number of launches in a round so far
+        current_batch = 0,
+        // number of balls on the board at the moment
+        current_balls = 0,
+        // ball velocity
+        ballv = 1,
+        t_to_exit = radius / ballv,
+        new_balls_interval = t_to_exit,
+        pause_between_rounds = 600,
+        score = 0,
+        end = 0,
+        ballRadius = 24,
+        balls = [],
+        fake_balls = [],
+        last_round_score = 0
+
+        for_hidden_current_round = [],
+        for_hidden_current_batch = [],
+        for_hidden_num_clicks = new Array(num_rounds*round_duration*3).fill(0),
+        clicks = 0,
+        for_hidden_ball_out = [],
+        for_hidden_probability_out = [],
+        for_hidden_sigmoid_probability_out = [],
+        for_hidden_score = [],
+        for_hidden_distances = [],
+
+        point_multiplicator = 0.02
+        final_multiplicator = roundToTwo(1 + point_multiplicator * slider.value)
+
+    // new condition: if you don't tap all 3 balls in the same zone, you get 0
+    function zone_scores() {
+                    if (for_hidden_score[for_hidden_score.length-1] !== for_hidden_score[for_hidden_score.length-2] ||
+                        for_hidden_score[for_hidden_score.length-1] !== for_hidden_score[for_hidden_score.length-3] ||
+                    // a condition that captures the case when the balls fly out
+                        for_hidden_score[for_hidden_score.length-1] < 0
+                    ) {
+                        for_hidden_score[for_hidden_score.length-3] = 0
+                        for_hidden_score[for_hidden_score.length-2] = 0
+                        for_hidden_score[for_hidden_score.length-1] = 0
+                    }
+                    last_round_score += for_hidden_score[for_hidden_score.length-1] +
+                            for_hidden_score[for_hidden_score.length-2] +
+                            for_hidden_score[for_hidden_score.length-3]
+    }
+
+    function play_loop() {
+        if (current_round === -1) {
+            startLevel()
+        }
+        t++
+        if (play === 1) {
+            if (current_batch === 0) {
+                last_round_score = 0
+            }
+            // create balls at intervals
+            if (current_batch < round_duration) {
+                if (t % new_balls_interval === 0) {
+
+                    if (current_batch > 0) {
+                        zone_scores()
+                    }
+                    createBalls()
+                    current_batch += 1
+                    t = 0
+                } else if (current_balls === 0 && t < new_balls_interval - 60) {
+                    t = new_balls_interval - 60
+                }
+            }
+
+            // move balls
+            balls.forEach(function (ball) {
+                if (ball.done === false) {
+                    // x offset from the center of a ball
+                    ball.x += ball.vx
+                    // y offset from the center of a ball
+                    ball.y += ball.vy
+                    // distance from the center of a ball, normalized by the radius
+                    ball.dc = Math.sqrt(Math.pow(ball.x, 2) + Math.pow(ball.y, 2)) / radius
+                    // probability of a ball to be clicked on successfully
+                    ball.p = 1 - (Math.pow(balls[balls.length - 3].dc, 2)
+                        + Math.pow(balls[balls.length - 2].dc, 2)
+                        + Math.pow(balls[balls.length - 1].dc, 2)) / 3
+                    // probability of a ball to be clicked on successfully sigmoid
+                    ball.psigmoid = 1 - (1/(1+Math.pow(Math.E, -10*(balls[balls.length - 3].dc-0.5)))
+                        + 1/(1+Math.pow(Math.E, -10*(balls[balls.length - 2].dc-0.5)))
+                        + 1/(1+Math.pow(Math.E, -10*(balls[balls.length - 1].dc-0.5)))) / 3
+                    if (ball.dc > 0.999) {
+
+                        current_balls -= 1
+
+                        ball.done = true
+                        ball.visible = false
+//                        score += punishment
+                        for_hidden_ball_out.push(1)
+                        for_hidden_score.push(punishment)
+                        // distance is 1 when the ball flies out
+                        for_hidden_distances.push(1)
+                    }
+                }
+            })
+
+            fake_balls.forEach(function (ball) {
+                if (ball.done === false) {
+                    ball.x += ball.vx
+                    ball.y += ball.vy
+
+                    ball.dc = Math.sqrt(Math.pow(ball.x, 2) + Math.pow(ball.y, 2)) / radius
+
+                    if (ball.dc > 0.999) {
+                        ball.x -= 2 * ball.vx
+                        ball.y -= 2 * ball.vy
+                        ball.angle = ball.angle + Math.PI / 2 + Math.random() * Math.PI
+                        ball.vx = - Math.cos(ball.angle) * ballv
+                        ball.vy = - Math.sin(ball.angle) * ballv
+                    }
+                }
+
+            })
+
+            if (current_batch === round_duration && current_balls === 0) {
+                play = 0
+                zone_scores()
+
+                fake_balls.forEach(function (ball) {
+                    ball.done = true
+                    ball.visible = false
+            })
+
+                if (current_round < num_rounds) {
+                    startLevel()
+                }
+            }
+
+            // start the next round when pause runs out
+        }
+//        if (balls) {
+//            if (balls.length > 0) {
+//                debug1.innerText = rewards[0][0]
+//            }
+//        }
+//
+//        debug2.innerText = score
+
+
+        if (current_round === num_rounds && end === 0) {
+
+            end = 1
+            score += last_round_score
+
+            gameScene.removeChild(next_round_text)
+            gameScene.removeChild(next_button_text)
+            gameScene.removeChild(next_button_rectangle)
+
+            final_score_text = new Text("You scored " + roundToTwo(score) + " points", {font: "64px Futura", fill: "blue"}
+        )
+            final_score_text.x = 100
+            final_score_text.y = 300
+            gameScene.addChild(final_score_text)
+
+            hidden_current_round.value = for_hidden_current_round
+            hidden_current_batch.value = for_hidden_current_batch
+            hidden_ball_out.value = for_hidden_ball_out
+            hidden_score.value = for_hidden_score
+            hidden_num_clicks.value = for_hidden_num_clicks
+            hidden_distances.value = for_hidden_distances
+
+            balls.forEach(function (ball) {
+                for_hidden_probability_out.push(ball.p)
+                for_hidden_sigmoid_probability_out.push(ball.psigmoid)
+            })
+
+            hidden_probability_out.value = for_hidden_probability_out
+            hidden_sigmoid_probability_out.value = for_hidden_sigmoid_probability_out
+        }
+
+    }
+
+    //The `randomInt` helper function (not including max)
+    function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min
+    }
+
+    //The `keyboard` helper function
+    function keyboard(keyCode) {
+        var key = {}
+        key.code = keyCode
+        key.isDown = false
+        key.isUp = true
+        key.press = undefined
+        key.release = undefined
+        //The `downHandler`
+        key.downHandler = function (event) {
+            if (event.keyCode === key.code) {
+                if (key.isUp && key.press) key.press()
+                key.isDown = true
+                key.isUp = false
+            }
+            event.preventDefault()
+        }
+        //The `upHandler`
+        key.upHandler = function (event) {
+            if (event.keyCode === key.code) {
+                if (key.isDown && key.release) key.release()
+                key.isDown = false
+                key.isUp = true
+            }
+            event.preventDefault()
+        }
+        //Attach event listeners
+        window.addEventListener(
+            "keydown", key.downHandler.bind(key), false
+        )
+        window.addEventListener(
+            "keyup", key.upHandler.bind(key), false
+        )
+        return key
+    }
+
+</script>
