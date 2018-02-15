@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test 1</title>
+</head>
+<script src="pixi.min.js"></script>
+<body>
+<div id="balls_go_here"></div>
+<script src="{% static "balls/pixi.min.js" %}"></script>
+<script>
+//Aliases
+var Container = PIXI.Container,
+    autoDetectRenderer = PIXI.autoDetectRenderer,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Texture = PIXI.Texture,
+    Sprite = PIXI.Sprite,
+    Text = PIXI.Text,
+    Graphics = PIXI.Graphics
+//Create a Pixi stage and renderer and add the
+//renderer.view to the DOM
+var h = window.innerHeight - 20,
+    w = window.innerHeight - 20
+var stage = new Container(),
+    renderer = autoDetectRenderer(w, h, {transparent: true})
+document.getElementById("balls_go_here").appendChild(renderer.view)
+setup()
+var circle, score,
+    clicks = [],
+    // ball velocity
+    ballv = 1,
+    ballRadius = 24,
+    t = 0
+function setup() {
+    gameScene = new Container()
+    stage.addChild(gameScene)
+    // ADD  C I R C L E S
+    circle = new Graphics()
+    circle.lineStyle(2, 0xFF00FF, 1)
+    circle.beginFill(0x9966FF, 0.3)
+    circle.drawCircle(w / 2, h / 2, h / 2)
+    circle.endFill()
+    gameScene.addChild(circle)
+    circle = new Graphics()
+    circle.lineStyle(2, 0xFF00FF, 1)
+    circle.beginFill(0x9966FF, 0.3)
+    circle.drawCircle(w / 2, h / 2, h / 2 * (2 / 3))
+    circle.endFill()
+    gameScene.addChild(circle)
+    circle = new Graphics()
+    circle.lineStyle(2, 0xFF00FF, 1)
+    circle.beginFill(0x9966FF, 0.3)
+    circle.drawCircle(w / 2, h / 2, h / 2 * (1 / 3))
+    circle.endFill()
+    gameScene.addChild(circle)
+    score = 0
+    score_text = new Text(
+        "Current Score is " + 0,
+        {font: "64px Futura", fill: "blue"}
+    )
+    score_text.x = 0
+    score_text.y = 0
+    gameScene.addChild(score_text)
+    central_score_text = new Text(
+        "+" + 10,
+        {font: "64px Futura", fill: "blue"}
+    )
+    central_score_text.x = (window.innerHeight - 20) / 2 - 24
+    central_score_text.y = (window.innerHeight - 20) / 2 - 16
+    gameScene.addChild(central_score_text)
+    middle_score_text = new Text(
+        "+" + 20,
+        {font: "64px Futura", fill: "blue"}
+    )
+    middle_score_text.x = (window.innerHeight - 20) / 3 - 32
+    middle_score_text.y = (window.innerHeight - 20) / 3 - 32
+    gameScene.addChild(middle_score_text)
+    outer_score_text = new Text(
+        "+" + 50,
+        {font: "64px Futura", fill: "blue"}
+    )
+    outer_score_text.x = (window.innerHeight - 20) / 5 - 32
+    outer_score_text.y = (window.innerHeight - 20) / 5 - 32
+    gameScene.addChild(outer_score_text)
+    minus_score_text = new Text(
+        "-" + 100,
+        {font: "64px Futura", fill: "blue"}
+    )
+    minus_score_text.x = 60
+    minus_score_text.y = 60
+    gameScene.addChild(minus_score_text)
+    // Spawn balls by pressing space
+    var space = keyboard(32)
+    space.press = function () {
+        createBall()
+    }
+    balls = []
+    //Set the game state
+    state = play
+    //Start the game loop
+    gameLoop()
+}
+last_angle = 0
+function createBall() {
+    // draw the ball
+    var ball = new Graphics()
+    ball.lineStyle(2, 0xFF00FF, 1)
+    ball.beginFill(0x9966FF, 0.3)
+    ball.drawCircle(w / 2, h / 2, ballRadius)
+    ball.endFill()
+    // ball's direction angle in radians; min angle between two successive balls is pi/2
+    do {
+        ball.angle = randomInt(0, 360) / 57.29578
+    }
+    while (Math.abs(last_angle - ball.angle) < Math.PI / 2)
+    last_angle = ball.angle
+    ball.vx = Math.cos(ball.angle) * ballv
+    ball.vy = Math.sin(ball.angle) * ballv
+    // indicates whether the ball was clicked or is out of bounds
+    ball.done = false
+    ball.interactive = true
+    ball.buttonMode = true
+    ball.on('mousedown', onClick)
+    // add the ball to the balls array
+    balls.push(ball)
+    // add the ball to the gameScene
+    gameScene.addChild(ball)
+}
+function onClick() {
+    this.done = true
+    this.visible = false
+    time = Date.now()
+//        clicks = [1,3]
+    // add points, depending on where the ball was clicked
+    var mouseData = renderer.plugins.interaction.mouse.global
+    if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 2 / 3) - ballRadius, 2)) {
+        score += 10
+        clicks.push(1)
+    } else if (Math.pow(mouseData.y - h / 2, 2) + Math.pow(mouseData.x - h / 2, 2) < Math.pow((h / 3) - ballRadius, 2)) {
+        score += 20
+        clicks.push(2)
+    } else {
+        score += 50
+        clicks.push(3)
+    }
+}
+function gameLoop() {
+    //Loop this function 60 times per second
+    requestAnimationFrame(gameLoop)
+    //Update the current game state:
+    state()
+    //Render the stage
+    renderer.render(stage)
+}
+function play() {
+    balls.forEach(function (ball) {
+        if (ball.done == false) {
+            ball.x += ball.vx
+            ball.y += ball.vy
+            if (Math.pow(ball.y, 2) + Math.pow(ball.x, 2) > Math.pow((h / 2) + ballRadius, 2)) {
+                ball.done = true
+                ball.visible = false
+                score -= 100
+                clicks.push(0)
+            }
+        }
+    })
+    t++
+    score_text.text = "Current Score is " + score
+//    document.getElementById("hidden_score").value = score
+//    document.getElementById("hidden_clicks").value = clicks
+//        score_text.text = clicks
+    if (Math.floor(t/60) === 5) {
+//            clicks = clicks.join()
+//            document.getElementById("hidden_clicks").value = clicks
+//            score_text.text = clicks
+//            document.getElementById("hidden_clicks").value = [1,2].join()
+    }
+}
+//The `randomInt` helper function (not including max)
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min
+}
+//The `keyboard` helper function
+function keyboard(keyCode) {
+    var key = {}
+    key.code = keyCode
+    key.isDown = false
+    key.isUp = true
+    key.press = undefined
+    key.release = undefined
+    //The `downHandler`
+    key.downHandler = function (event) {
+        if (event.keyCode === key.code) {
+            if (key.isUp && key.press) key.press()
+            key.isDown = true
+            key.isUp = false
+        }
+        event.preventDefault()
+    }
+    //The `upHandler`
+    key.upHandler = function (event) {
+        if (event.keyCode === key.code) {
+            if (key.isDown && key.release) key.release()
+            key.isDown = false
+            key.isUp = true
+        }
+        event.preventDefault()
+    }
+    //Attach event listeners
+    window.addEventListener(
+        "keydown", key.downHandler.bind(key), false
+    )
+    window.addEventListener(
+        "keyup", key.upHandler.bind(key), false
+    )
+    return key
+}
+</script>
+
+
+</body>
+</html>
