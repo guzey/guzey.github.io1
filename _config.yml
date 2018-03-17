@@ -18,8 +18,8 @@ pages_list:
   Feed: '/atom.xml'
   Site Contents: '/site-contents'
 
-# Gems
-gems:
+# Plugins
+plugins:
   - jekyll-paginate
   - jekyll-gist
 
