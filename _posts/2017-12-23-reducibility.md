@@ -3,7 +3,7 @@ layout: post
 title: Polynomial Time Reductions
 ---
 
-{% include mathjax.html %}
+{% include katex.html %}
 
 Abstract: this post gives a quick overview of polynomial time reductions – a method for computationally cheap transformations of problems into different problems. Chiefly, it's used to prove that some problems are at least as hard as the other ones, which taps into the discussion of **P** vs **NP** problem.
 
