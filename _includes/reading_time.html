@@ -1,0 +1,8 @@
+<!-- source: https://carlosbecker.com/posts/jekyll-reading-time-without-plugins/ -->
+
+{% assign words = content | number_of_words %}
+  {% if words < 270 %}
+    reading time: 1 min
+  {% else %}
+    reading time: {{ words | divided_by:135 }} mins
+  {% endif %}
