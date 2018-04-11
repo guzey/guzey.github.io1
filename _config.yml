@@ -16,7 +16,7 @@ author:
 pages_list:
   Blog: '/blog'
   Feed: '/atom.xml'
-  Site Contents: '/site-contents'
+  Site Contents + Blog Archive: '/site-contents'
 
 # Plugins
 plugins:
