@@ -4,7 +4,7 @@ permalink:           blog/:title
 # Setup
 title:               Alexey Guzey
 url:                 http://guzey.com
-paginate:            5
+paginate:            10
 paginate_path: 	     "/blog/page:num"
 
 author:
@@ -16,7 +16,7 @@ author:
 pages_list:
   Blog: '/blog'
   Feed: '/atom.xml'
-  Site Contents + Blog Archive: '/site-contents'
+  Blog Archive + Site Contents: '/site-contents'
 
 # Plugins
 plugins:
