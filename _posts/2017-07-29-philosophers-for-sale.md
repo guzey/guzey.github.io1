@@ -8,7 +8,7 @@ This play was written by Lucian. I felt that all its existing English translatio
 ---
 
 Zeus is short of money. He takes famous philosophers from the afterlife and puts them up for sale as slaves:  
-"Great teachers of life are sold!", Hermes is shouting, "If you want a good life, come forward and choose one for youself!", the buyers approach the slaves and start to examine them.
+"Great teachers of life are sold!", Hermes is shouting, "If you want a good life, come forward and choose one for yourself!", the buyers approach the slaves and start to examine them.
 
 Pythagoras is on the platform.  
 "Here's a wonderful life, a heavenly life! Who wants to become a superhuman? Who wants to learn the harmony of the creation and come to life after death?"  
@@ -30,7 +30,7 @@ Pythagoras is on the platform.
 "I don't eat meat, I don't eat beans."  
 "Good enough! Hermes, I'll take him."  
 
-Diogenis is on the platform.  
+Diogenes is on the platform.  
 "Here's a manly life, here's a free life! Who will buy him?"  
 "Free? Will I not be taken to court for buying a free man?"  
 "Don't be afraid, he says that he is free even as a slave."  
@@ -38,7 +38,7 @@ Diogenis is on the platform.
 "Ask him!"  
 "I'm afraid he'll bite me!"  
 "Don't be afraid, he's tame."  
-"So, Diogenis, where are your from?"  
+"So, Diogenes, where are you from?"  
 "From everywhere!"  
 "What are you like?"  
 "I'm like Heracles!"  
@@ -49,8 +49,8 @@ Diogenis is on the platform.
 "I already know how to cuss and fight, thank you very much. But you have strong hands, you'll make a great digger; I'll give two mites for you."  
 "Take him!"  
 
-"And here's two lifes at once, one wiser than the other! Who wants them?"  
-"What is it with them? One is constanly laughing, the other one is constantly crying. Why are you laughing?"  
+"And here's two lives at once, one wiser than the other! Who wants them?"  
+"What is it with them? One is constantly laughing, the other one is constantly crying. Why are you laughing?"  
 "I'm laughing at you: you think you're buying a slave, while actually you're just buying atoms, void, and infinity."  
 "That you're full of void, I can see that alright. And why are you crying?"  
 "I'm crying, because everything comes and goes, because there's grief in every joy, and joy in every grief, because there's no eternity in the eternity, and the eternity is only a child playing dice."  
@@ -76,7 +76,7 @@ Diogenis is on the platform.
 "A valiant life, an all-perfect life is sold! Who wants to know everything?"  
 "How is it: everything?"  
 "He is the only wise man, thus he is the only king, and rich man, and general, and navigator."  
-"And he is the only cook, and the only carpenter, and the only cattler?"  
+"And he is the only cook, and the only carpenter, and the only cattleman?"  
 "Of course."  
 "I'd be crazy not to buy such a slave. So, stoic, are you not offended that you're a slave?"  
 "Not at all. This does not depend on me, thus I'm indifferent towards it."  
@@ -107,7 +107,7 @@ Diogenis is on the platform.
 "And he also knows that a man is a laughing animal, while a donkey is not, and that a donkey does not know how to build houses and vessels."  
 "Enough, enough, I'm buying him; take however much you want from me, Hermes."  
 
-"So, who else do whe have left? Skeptic? Come out skeptic, maybe someone's going to buy you."  
+"So, who else do we have left? Skeptic? Come out skeptic, maybe someone's going to buy you."  
 "Tell me, skeptic, what can you do?"  
 "Nothing."  
 "Why?"  

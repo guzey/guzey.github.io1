@@ -27,4 +27,4 @@ Does this hypothesis has any real explanatory power? I have no idea. My bet is t
 
 Regardless, I’ll know for sure in a couple of weeks :)
 
-Update from spring 2016: This insight did indeed turn out to be useless, but I have been able to basically [solve productivity](playing-with-identity-or-solution-to-productivity).
+Update from spring 2016: This insight did indeed turn out to be useless, but I have been able to basically [solve productivity](playing-with-identity).

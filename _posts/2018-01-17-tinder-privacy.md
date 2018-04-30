@@ -3,13 +3,13 @@ layout: post
 title: Tinder Is Effectively Deanonymized in Russia
 ---
 
-Abstract: About 2/3s of tinder accounts in Moscow, Russia can be directly linked to a VK account with very little effort, and based on tinder pictures alone.
+Abstract: About 2/3s of tinder accounts in Moscow, Russia can be directly linked to a VK account with very little effort and based on tinder pictures alone.
 
 ---
 
 ## Introduction
 
-Is tinder anonymous? It might be in the United States. It's definitely not in Russia.
+Is tinder anonymous? It's definitely not in Russia.
 
 [FindFace.ru](https://findface.ru/) is a site that claims to be able to "find anybody in VK.com" (VK being the Russian facebook), and it has been shown to work extremely well in a wide variety of cases [[1](https://www.washingtonpost.com/world/europe/as-moscow-goes-high-tech-so-does-its-surveillance-system/2017/12/17/3b3ef2cc-da9e-11e7-a241-0848315642d0_story.html), [2](https://themoscowtimes.com/news/protests-58350), [3](https://www.theguardian.com/world/2016/apr/14/russian-photographer-yegor-tsvetkov-identifies-strangers-facial-recognition-app)].
 

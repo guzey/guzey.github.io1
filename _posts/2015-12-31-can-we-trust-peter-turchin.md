@@ -56,7 +56,7 @@ You can buy Ultrasociety on [Amazon](http://www.amazon.com/Ultrasociety-Years-Hu
 Thank you for your response! I do not believe that you did a fair job of replying to my critique, though.
 
 1. 1985-1990 results *do* contradict your hypothesis. By ignoring entries that don't reach statistical significance you inflate the chance of false positives and your analysis ceases to be valid.
-2. 1985 is an outlier. Excluding it, average Gini coefficent [fluctuates around .55](http://i.imgur.com/Ji0cQUZ.png) and does not show a steep upward trajectory.
+2. 1985 is an outlier. Excluding it, average Gini coefficient [fluctuates around .55](http://i.imgur.com/Ji0cQUZ.png) and does not show a steep upward trajectory.
 3. It is still unclear where did you get 1992-2001 interval -- it's not mentioned anywhere in the paper. You can't just bundle 1991-1997 and 1998-2002 and report the average of them.
 4. Your causal claims are still based on purely correlation data.
 5. You completely ignored my concerns about unfaithful representation of the other two studies, which contradict your hypothesis.

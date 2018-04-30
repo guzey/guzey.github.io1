@@ -17,7 +17,7 @@ Now 75% of people are above average! Woohoo!
 
 With 3 dimensions it's 7/8 or 87.5%. Extend to infinity, get the famous "all the children are above average", which, as it turns out, not a complete nonsense.
 
-What relevence does this metaphor have to everyday life? In real life, everybody plays numerous games: job, community, online forums with prestige systems, literal videogames, etc. Assumption of independent outcomes doesn't seem at all plausible but still, the more distinct hierarchies of status exist, the better people can feel about themselves, which is pretty nice.
+What relevance does this metaphor have to everyday life? In real life, everybody plays numerous games: job, community, online forums with prestige systems, literal videogames, etc. Assumption of independent outcomes doesn't seem at all plausible but still, the more distinct hierarchies of status exist, the better people can feel about themselves, which is pretty nice.
 
 ## Problems
 
@@ -25,7 +25,7 @@ What relevence does this metaphor have to everyday life? In real life, everybody
 2. People may change subjective weights of different hierarchies.
 3. People may compete on the number of hierarchies they're above average in.
 
-In fact, in the present model, if hierarchies are transprent, there's very likely to emerge some kind of the ultimate weighted-sum-of-all-others-ultimate-status which will collapse the system and return everybody to the initial state with one axis. (Cheng, Tracy, Foulsham, Kingstone, & Henrich, 2013), (Von Rueden, Gurven, & Kaplan, 2008)
+In fact, in the present model, if hierarchies are transparent, there's very likely to emerge some kind of the ultimate weighted-sum-of-all-others-ultimate-status which will collapse the system and return everybody to the initial state with one axis. (Cheng, Tracy, Foulsham, Kingstone, & Henrich, 2013), (Von Rueden, Gurven, & Kaplan, 2008)
 
 ## Conclusion
 
