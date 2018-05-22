@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <span class="post-date">
+    Created: {{ page.created_date | date_to_string }}
+    <br>
+    Last edited: {{ page.last_edited_date | date_to_string }}
+    </span>
+    
+    {{ content }}
+    
+    {% include knowledge_plug.html %}
+</div>
